@@ -7,7 +7,7 @@ export default function Home () {
     return (
         <View style={baseStyles.container}>
             <Text style={baseStyles.headingOne}>
-                Tipsy Travellers
+                Tipsy negers
             </Text>
         </View>
     )
