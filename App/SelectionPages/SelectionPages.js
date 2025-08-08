@@ -1,4 +1,4 @@
-import { View, StyleSheet, Image, Text } from "react-native";
+import { View, StyleSheet, Image, Text, SafeAreaView } from "react-native";
 import GameSettingButton from "./components/GameSettingButton";
 import { useEffect, useState } from "react";
 
@@ -25,7 +25,7 @@ export default function SelectionPages () {
     }, [gameSettings])
 
     return(
-        <View style={style.mainContainer}>
+        <SafeAreaView style={style.mainContainer}>
             <View style={ style.animationImg }>
                 <Image
                     
@@ -69,7 +69,7 @@ export default function SelectionPages () {
 
 
             
-        </View>
+        </SafeAreaView>
     )
 }
 

@@ -1,8 +1,8 @@
-import { Button, Text, View } from "react-native"
+import { Button, SafeAreaView, Text } from "react-native"
 import { useEffect, useState } from "react"
 
 //STYLES
-import { baseStyles } from "../shared/styles/variables"
+import { baseStyles } from "./shared/styles/variables"
 
 export default function Home () {
 
@@ -32,7 +32,7 @@ export default function Home () {
     }, [gameSettings])
 
     return (
-        <View style={baseStyles.container}>
+        <SafeAreaView style={baseStyles.container}>
             <Text style={baseStyles.headingOne}>
                 Tipsy Travellers
                 <Button
@@ -48,6 +48,6 @@ export default function Home () {
                     onPress={ () => handleDiffuculty("hard") }
                 />
             </Text>
-        </View>
+        </SafeAreaView>
     )
 }
