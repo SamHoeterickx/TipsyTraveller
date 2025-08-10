@@ -4,7 +4,12 @@ import OptionButton from "./components/OptionButton/OptionButton";
 
 //COMPONENTS
 
-export default function Home () {
+export default function Home ({ navigation }) {
+
+    const handleNavigaiton = ( optionType ) => {
+        navigation.navigate( optionType );
+    }
+
     return(
         <SafeAreaView style={ style.mainContainer }>
             <MainAnimation />
@@ -12,9 +17,11 @@ export default function Home () {
             <View style={ style.buttonContainer } >
                 <OptionButton
                     ButtonCopy={ "CREATE GAME" }
+                    onPress={() => handleNavigaiton('CreateGameScreen')}
                 />
                 <OptionButton
                     ButtonCopy={ "JOIN GAME" }
+                    onPress={() => handleNavigaiton('JoinGameScreen')}
                 />
             </View>
         </SafeAreaView>
