@@ -1,53 +1,40 @@
-import { Button, SafeAreaView, Text } from "react-native"
-import { useEffect, useState } from "react"
+import { SafeAreaView, Text, StyleSheet, View } from "react-native";
+import MainAnimation from "../shared/components/MainAnimation/MainAnimation";
+import OptionButton from "./components/OptionButton/OptionButton";
 
-//STYLES
-import { baseStyles } from "./shared/styles/variables"
+//COMPONENTS
 
 export default function Home () {
-
-    const [gameSettings, setGameSettings] = useState({
-        difficulty: "",
-        duration: "",
-        nrOfPeople: "",
-        persons: {}
-    })
-
-    const handleDiffuculty = ( difficulty ) => {
-        setGameSettings({
-            ...gameSettings,
-            difficulty: difficulty
-        })
-    }
-
-    const handleDuration = ( duration ) => {
-        setGameSettings({
-            ...gameSettings,
-            duration: duration
-        })
-    }
-
-    useEffect(() => {
-        console.log(gameSettings)
-    }, [gameSettings])
-
-    return (
-        <SafeAreaView style={baseStyles.container}>
-            <Text style={baseStyles.headingOne}>
-                Tipsy Travellers
-                <Button
-                    title="easy"
-                    onPress={ () => handleDiffuculty("easy") }
+    return(
+        <SafeAreaView style={ style.mainContainer }>
+            <MainAnimation />
+            <Text style={ style.description }>Maak een roadtrip en ga skeftig zat</Text>
+            <View style={ style.buttonContainer } >
+                <OptionButton
+                    ButtonCopy={ "CREATE GAME" }
                 />
-                <Button
-                    title="Medium"
-                    onPress={ () => handleDiffuculty("medium") }
+                <OptionButton
+                    ButtonCopy={ "JOIN GAME" }
                 />
-                <Button
-                    title="hard"
-                    onPress={ () => handleDiffuculty("hard") }
-                />
-            </Text>
+            </View>
         </SafeAreaView>
     )
 }
+
+const style = StyleSheet.create({
+    mainContainer: {
+        backgroundColor: "#FAF3E0",
+        height: "100%",
+        alignItems: "center"
+    },
+    buttonContainer: {
+        width: "85%",
+    },
+    description: {
+        color: "#000",
+        fontSize: 25,
+        width: "75%",
+        textAlign: "center",
+        marginBottom: 30
+    }
+})
