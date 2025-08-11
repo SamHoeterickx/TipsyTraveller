@@ -4,6 +4,7 @@ import OptionButton from "./components/OptionButton/OptionButton";
 import ProfileButton from "../shared/components/ProfileIcon/ProfileButton";
 //COMPONENTS
 
+import {AndroidSafeView} from "../shared/styles/SafeAreaView/SafeAreaView";
 export default function Home ({ navigation }) {
 
     const handleNavigaiton = ( optionType ) => {
@@ -11,7 +12,7 @@ export default function Home ({ navigation }) {
     }
 
     return(
-        <SafeAreaView style={ style.mainContainer }>
+        <SafeAreaView style={ [style.mainContainer, AndroidSafeView.AndroidSafeView] }>
             <ProfileButton/>
             <MainAnimation />
             <Text style={ style.description }>Take a roadtrip and drink your way to victory!</Text>
