@@ -44,7 +44,9 @@ export default function GameSettingOptionContainer ({ GameSettingOption}) {
 
 const style = StyleSheet.create({
     optionContainer: {
-        marginTop: 40
+        marginTop: 40,
+        marginBottom: 40,
+        height: "27%"
     },
     buttonContainer: {
         width: "90%",
@@ -59,7 +61,8 @@ const style = StyleSheet.create({
         borderBottomWidth: 1,
     },
     settingTitleTitle: {
-        fontSize: 24,
-        textTransform: "uppercase"
+        fontSize: 18,
+        textTransform: "uppercase",
+        fontFamily: "dogicapixel"
     },
 })

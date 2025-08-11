@@ -18,13 +18,14 @@ export default function GameSettingButton({ title, setting, option, imgPath, gam
         }else {
             setGameSettings({
                 ...gameSettings,
-                nrOfPeople: option
+                nrOfPlayers: option
             })
         }
         console.log(setting);
     }
 
     const isActive = gameSettings[setting] === option;
+    console.log(gameSettings[setting], "hehe", option);
 
     return (
         <View >
@@ -68,7 +69,8 @@ const style = StyleSheet.create({
     },
     buttonCopy: {
         paddingBottom: 10,
-        fontWeight: 600
+        fontWeight: 600,
+        fontFamily: "dogicapixelbold"
     },
     buttonActive: {
         backgroundColor: "#1BA39C"

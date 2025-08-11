@@ -1,4 +1,4 @@
-import { View, StyleSheet, Image, Text, SafeAreaView , Pressable} from "react-native";
+import { View, StyleSheet, Image, Text, SafeAreaView , TouchableOpacity} from "react-native";
 import { useEffect, useState } from "react";
 
 //COMPONENTS
@@ -21,14 +21,15 @@ import difficultyHardImage from "../../assets/images/3beers-flesje.png";
  * @property {Function} setGameSettings 
  */
 
-export default function SelectionPages () {
+export default function SelectionPages ({ navigation }) {
 
     const [gameSettings, setGameSettings] = useState({
         difficulty: "",
         duration: "",
-        nrOfPeople: "",
+        nrOfPlayers: "",
         persons: {}
     })
+    const [currentSetting, setCurrentSetting] = useState("difficulty")
 
     const handleDifficulty = ( difficulty ) => {
         setGameSettings({
@@ -36,6 +37,22 @@ export default function SelectionPages () {
             difficulty: difficulty
         })
     }
+
+    const handleNextSetting = () => {
+
+        if(currentSetting === "difficulty"){
+            setCurrentSetting("duration")
+        }else if(currentSetting === "duration"){
+            setCurrentSetting("nrOfPlayers")
+        }
+
+        if(currentSetting === "nrOfPlayers"){
+            navigation.navigate( "LobbyScreen" );
+        }
+    }
+    useEffect(() => {
+        console.log(currentSetting)
+    }, [currentSetting])
 
     useEffect(() => {
         console.log(gameSettings)
@@ -55,8 +72,8 @@ export default function SelectionPages () {
     /** @type {GameSettingOption} */
     const durationSettings = {
         setting: "duration",
-        titles: ["EASY", "MEDIUM", "HARD"],
-        options: ["easy", "medium", "hard"],
+        titles: ["SHORT", "MEDIUM", "LONG"],
+        options: ["short", "medium", "long"],
         imgPathOptions: [difficultyEasyImage, difficultyMediumImage, difficultyHardImage],
         gameSettings,
         setGameSettings
@@ -64,7 +81,7 @@ export default function SelectionPages () {
 
     /** @type {GameSettingOption} */
     const playerSettings = {
-        setting: "nrOfPlayer",
+        setting: "nrOfPlayers",
         titles: ["1-4", "4-8", "8-12"],
         options: ["1-4", "4-8", "8-12"],
         imgPathOptions: [difficultyEasyImage, difficultyMediumImage, difficultyHardImage],
@@ -76,15 +93,23 @@ export default function SelectionPages () {
         <SafeAreaView style={[style.mainContainer, AndroidSafeView.AndroidSafeView]}>
             <MainAnimation />
 
-            <GameSettingOptionContainer
-                GameSettingOption={ difficultySettings }
-            />
-            
-            <Pressable style={ style.buttonContainer }>
-                <Text>
-                    Next
-                </Text>
-            </Pressable>
+            {
+                currentSetting === "difficulty" ? (
+                    <GameSettingOptionContainer GameSettingOption={ difficultySettings } />
+                ) : currentSetting === "duration" ? (
+                    <GameSettingOptionContainer GameSettingOption={ durationSettings } />
+                ) : (
+                    <GameSettingOptionContainer GameSettingOption={ playerSettings } />
+                )
+            }
+
+            <View>
+                <TouchableOpacity
+                    onPress={ handleNextSetting }
+                >
+                    <Text>Next</Text>
+                </TouchableOpacity>
+            </View>
         </SafeAreaView>
     )
 }

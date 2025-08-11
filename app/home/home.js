@@ -36,7 +36,8 @@ const style = StyleSheet.create({
     mainContainer: {
         backgroundColor: "#FAF3E0",
         height: "100%",
-        alignItems: "center"
+        alignItems: "center",
+        justifyContent: "space-between"
     },
     buttonContainer: {
         width: "85%",

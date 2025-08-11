@@ -7,6 +7,7 @@ import Home from '../home/home';
 import SelectionPages from '../CreateGame/CreateGame';
 import JoinGame from "../JoinGame/JoinGame"
 import {useFonts} from "expo-font";
+import Lobby from '../Lobby/Lobby';
 
 const Stack = createStackNavigator();
 
@@ -31,6 +32,11 @@ export default function App() {
         <Stack.Screen
           name="JoinGameScreen"
           component={ JoinGame }
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name='LobbyScreen'
+          component={ Lobby }
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
