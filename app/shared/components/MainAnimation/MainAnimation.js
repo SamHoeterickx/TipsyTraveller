@@ -1,7 +1,10 @@
 import { StyleSheet, Text, View, Image } from "react-native";
 import LottieView from "lottie-react-native";
 import React, {useRef, useEffect} from "react";
+import { useFonts } from "expo-font";
+
 export default function MainAnimation () {
+
     const animation = useRef(null);
     useEffect(() => {
         if (animation.current) {
@@ -27,13 +30,14 @@ export default function MainAnimation () {
                         height: 450,
                         marginHorizontal: -35,
                         marginVertical: -95,
+
                     }}
                     // Find more Lottie files at https://lottiefiles.com/featured
                     source={require('../../../../assets/animations/animatie-wereld.json')}
                 />
             </View>
 
-            <Text style={ style.appName }>TIPSY TRAVELLERS</Text>
+            <Text style={ style.appName }>TIPSY TRAVELLER</Text>
         </View>
     )
 }
@@ -54,11 +58,13 @@ const style = StyleSheet.create({
 
     },
     appName: {
-        fontSize: 50,
+        color: "#393939",
+        fontSize: 40,
         textAlign: "center",
         position: "absolute",
-        bottom: 10,
-        fontFamily: "dogicapixel",
+        bottom: 30,
+        lineHeight: 50,
+        fontFamily: "dogicapixelbold",
 
     }
 })
