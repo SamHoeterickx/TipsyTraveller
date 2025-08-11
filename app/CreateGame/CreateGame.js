@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import MainAnimation from "../shared/components/MainAnimation/MainAnimation";
 import GameSettingOptionContainer from "./components/GameSettingOptionContainer";
 import {AndroidSafeView} from "../shared/styles/SafeAreaView/SafeAreaView";
+import Header from "../shared/components/Header/Header";
 //IMAGES
 import difficultyEasyImage from "../../assets/images/beer-flesje.png"
 import difficultyMediumImage from "../../assets/images/2beers-flesje.png"
@@ -91,6 +92,7 @@ export default function SelectionPages ({ navigation }) {
 
     return(
         <SafeAreaView style={[style.mainContainer, AndroidSafeView.AndroidSafeView]}>
+            <Header  navigation={navigation} showBackButton={true}/>
             <MainAnimation />
 
             {

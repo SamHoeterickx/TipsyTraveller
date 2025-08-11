@@ -12,7 +12,7 @@ export default function ProfileButton () {
 const styles = StyleSheet.create({
     container: {
         alignSelf: "flex-end",
-        marginRight: 30,
+        marginRight: 20,
 
     },
     image: {

@@ -1,7 +1,7 @@
 import { SafeAreaView, Text, StyleSheet, View } from "react-native";
 import MainAnimation from "../shared/components/MainAnimation/MainAnimation";
 import OptionButton from "./components/OptionButton/OptionButton";
-import ProfileButton from "../shared/components/ProfileIcon/ProfileButton";
+import Header from "../shared/components/Header/Header";
 //COMPONENTS
 
 import {AndroidSafeView} from "../shared/styles/SafeAreaView/SafeAreaView";
@@ -13,7 +13,7 @@ export default function Home ({ navigation }) {
 
     return(
         <SafeAreaView style={ [style.mainContainer, AndroidSafeView.AndroidSafeView] }>
-            <ProfileButton/>
+            <Header  navigation={navigation} showBackButton={false}/>
             <MainAnimation />
             <Text style={ style.description }>Take a roadtrip and drink your way to victory!</Text>
             <View style={ style.buttonContainer } >
