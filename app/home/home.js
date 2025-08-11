@@ -4,6 +4,7 @@ import OptionButton from "./components/OptionButton/OptionButton";
 import ProfileButton from "../shared/components/ProfileIcon/ProfileButton";
 //COMPONENTS
 
+import {AndroidSafeView} from "../shared/styles/SafeAreaView/SafeAreaView";
 export default function Home ({ navigation }) {
 
     const handleNavigaiton = ( optionType ) => {
@@ -11,20 +12,20 @@ export default function Home ({ navigation }) {
     }
 
     return(
-        <SafeAreaView style={ style.mainContainer }>
+        <SafeAreaView style={ [style.mainContainer, AndroidSafeView.AndroidSafeView] }>
             <ProfileButton/>
             <MainAnimation />
-            <Text style={ style.description }>Maak een roadtrip en ga skeftig zat</Text>
+            <Text style={ style.description }>Take a roadtrip and drink your way to victory!</Text>
             <View style={ style.buttonContainer } >
                 <OptionButton
                     ButtonCopy={ "CREATE GAME" }
                     onPress={() => handleNavigaiton('CreateGameScreen')}
-                    color={'white'}
+                    color={'#1BA39C'}
                 />
                 <OptionButton
                     ButtonCopy={ "JOIN GAME" }
                     onPress={() => handleNavigaiton('JoinGameScreen')}
-                    color={'#1BA39C'}
+                    color={'white'}
                 />
             </View>
         </SafeAreaView>
@@ -41,10 +42,12 @@ const style = StyleSheet.create({
         width: "85%",
     },
     description: {
-        color: "#000",
-        fontSize: 25,
+        color: "#393939",
+        fontSize: 20,
         width: "75%",
         textAlign: "center",
-        marginBottom: 30
+        marginBottom: 30,
+        marginTop: 1,
+        fontFamily: "dogicapixel"
     }
 })
