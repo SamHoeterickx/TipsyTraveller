@@ -37,7 +37,7 @@ export default function MainAnimation () {
                 />
             </View>
 
-            <Text style={ style.appName }>TIPSY TRAVELLER</Text>
+            <Text style={ style.appName }>TIPSY {"\n"} TRAVELLER</Text>
         </View>
     )
 }
