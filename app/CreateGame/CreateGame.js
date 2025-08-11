@@ -10,6 +10,17 @@ import difficultyEasyImage from "../../assets/images/beer-flesje.png"
 import difficultyMediumImage from "../../assets/images/2beers-flesje.png"
 import difficultyHardImage from "../../assets/images/3beers-flesje.png";
 
+//TYPE
+/**
+ * @typedef {Object} GameSettingOption
+ * @property {string} setting
+ * @property {string[]} titles 
+ * @property {(string|number)[]} options 
+ * @property {any[]} imgPathOptions 
+ * @property {Object} gameSettings 
+ * @property {Function} setGameSettings 
+ */
+
 export default function SelectionPages () {
 
     const [gameSettings, setGameSettings] = useState({
@@ -30,6 +41,8 @@ export default function SelectionPages () {
         console.log(gameSettings)
     }, [gameSettings])
 
+
+    /** @type {GameSettingOption} */
     const difficultySettings = {
         setting: "difficulty",
         titles: ["EASY", "MEDIUM", "HARD"],
@@ -38,47 +51,35 @@ export default function SelectionPages () {
         gameSettings,
         setGameSettings
     };
-      
-      const durationSettings = {
+
+    /** @type {GameSettingOption} */
+    const durationSettings = {
         setting: "duration",
         titles: ["EASY", "MEDIUM", "HARD"],
         options: ["easy", "medium", "hard"],
-        imgPathOptions: [" require('../../assets/images/3beers-flesje.png')", " require('../../assets/images/3beers-flesje.png')", " require('../../assets/images/3beers-flesje.png')"],
+        imgPathOptions: [difficultyEasyImage, difficultyMediumImage, difficultyHardImage],
         gameSettings,
         setGameSettings
-      };
-      
-      const playersSettings = {
-        setting: "nrOfPeople",
-        titles: ["EASY", "MEDIUM", "HARD"],
-        options: ["easy", "medium", "hard"],
-        imgPathOptions: [" require('../../assets/images/3beers-flesje.png')", " require('../../assets/images/3beers-flesje.png')", " require('../../assets/images/3beers-flesje.png')"],
+    };
+
+    /** @type {GameSettingOption} */
+    const playerSettings = {
+        setting: "nrOfPlayer",
+        titles: ["1-4", "4-8", "8-12"],
+        options: ["1-4", "4-8", "8-12"],
+        imgPathOptions: [difficultyEasyImage, difficultyMediumImage, difficultyHardImage],
         gameSettings,
         setGameSettings
-      };
+    };
 
     return(
         <SafeAreaView style={style.mainContainer}>
             <MainAnimation />
 
-            {/* <GameSettingOptionContainer
-                setting={ "difficulty" }
-                titleOne={ "EASY" }
-                titleTwo={ "MEDIUM" }
-                titleThree={ "HARD" }
-                optionOne={ "easy"}
-                optionTwo={ "medium" }
-                optionThree={ "hard" }
-                imgPathOptionOne={ require('../../assets/images/3beers-flesje.png') }
-                imgPathOptionTwo={ require('../../assets/images/3beers-flesje.png') }
-                imgPathOptionThree={ require('../../assets/images/3beers-flesje.png') }
-                gameSettings={ gameSettings }
-                setGameSettings={ setGameSettings }
-            /> */}
-
             <GameSettingOptionContainer
                 GameSettingOption={ difficultySettings }
             />
+            
             <Pressable style={ style.buttonContainer }>
                 <Text>
                     Next

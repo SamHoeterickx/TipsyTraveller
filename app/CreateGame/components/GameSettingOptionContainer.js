@@ -3,42 +3,6 @@ import { Text, View, StyleSheet } from 'react-native'
 //COMPONENTS
 import GameSettingButton from './GameSettingButton'
 
-// export default function GameSettingOptionContainer ({ titleOne, titleTwo, titleThree, setting, optionOne, optionTwo, optionThree, imgPathOptionOne, imgPathOptionTwo, imgPathOptionThree, gameSettings, setGameSettings }) {
-//     return(
-//         <View style={ style.optionContainer }>
-//             <View style={style.settingTitle}>
-//                 <Text style={ style.settingTitleTitle}>SELECT { setting }</Text>
-//             </View>
-//             <View style={style.buttonContainer}>
-//                 <GameSettingButton
-//                     setting={ setting }
-//                     title={ titleOne }
-//                     option={ optionOne}
-//                     imgPath={ imgPathOptionOne }
-//                     gameSettings={ gameSettings }
-//                     setGameSettings={ setGameSettings }
-//                 />
-//                 <GameSettingButton
-//                     setting={ setting }
-//                     title={ titleTwo }
-//                     option={ optionTwo}
-//                     imgPath={ imgPathOptionTwo }
-//                     gameSettings={ gameSettings }
-//                     setGameSettings={ setGameSettings }
-//                 />
-//                 <GameSettingButton
-//                     setting={ setting }
-//                     title={ titleThree }
-//                     option={ optionThree}
-//                     imgPath={ imgPathOptionThree }
-//                     gameSettings={ gameSettings }
-//                     setGameSettings={ setGameSettings }
-//                 />
-//             </View>
-//         </View>
-//     )
-// }
-
 export default function GameSettingOptionContainer ({ GameSettingOption}) {
     return (
         <View style={ style.optionContainer }>
