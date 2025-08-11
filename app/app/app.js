@@ -13,18 +13,18 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen 
-          name="Home" 
+        <Stack.Screen
+          name="Home"
           component={ Home }
           options={{ headerShown: false }}
         />
-        <Stack.Screen 
-          name="CreateGameScreen" 
+        <Stack.Screen
+          name="CreateGameScreen"
           component={ SelectionPages }
           options={{ headerShown: false }}
         />
-        <Stack.Screen 
-          name="JoinGameScreen" 
+        <Stack.Screen
+          name="JoinGameScreen"
           component={ JoinGame }
           options={{ headerShown: false }}
         />

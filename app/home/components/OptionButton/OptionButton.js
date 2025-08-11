@@ -2,7 +2,7 @@ import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { useState } from 'react';
 
-export default function OptionButton ({ ButtonCopy, onPress }){
+export default function OptionButton ({ ButtonCopy, onPress, color}){
 
   const [isPressed, setIsPressed] = useState(false);
 
@@ -11,6 +11,7 @@ export default function OptionButton ({ ButtonCopy, onPress }){
     <TouchableOpacity 
       style={ [
         style.buttonContainer,
+          { backgroundColor: color },
         isPressed && style.buttonPressed
       ]} 
       onPress={ onPress }
@@ -25,7 +26,7 @@ export default function OptionButton ({ ButtonCopy, onPress }){
 const style = StyleSheet.create({
     buttonContainer: {
       width: "100%",
-      backgroundColor: "#ffffff",
+
       alignItems: "center",
       justifyContent: "center",
       height: 125,

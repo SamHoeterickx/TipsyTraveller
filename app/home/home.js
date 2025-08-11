@@ -1,7 +1,7 @@
 import { SafeAreaView, Text, StyleSheet, View } from "react-native";
 import MainAnimation from "../shared/components/MainAnimation/MainAnimation";
 import OptionButton from "./components/OptionButton/OptionButton";
-
+import ProfileButton from "../shared/components/ProfileIcon/ProfileButton";
 //COMPONENTS
 
 export default function Home ({ navigation }) {
@@ -12,16 +12,19 @@ export default function Home ({ navigation }) {
 
     return(
         <SafeAreaView style={ style.mainContainer }>
+            <ProfileButton/>
             <MainAnimation />
             <Text style={ style.description }>Maak een roadtrip en ga skeftig zat</Text>
             <View style={ style.buttonContainer } >
                 <OptionButton
                     ButtonCopy={ "CREATE GAME" }
                     onPress={() => handleNavigaiton('CreateGameScreen')}
+                    color={'white'}
                 />
                 <OptionButton
                     ButtonCopy={ "JOIN GAME" }
                     onPress={() => handleNavigaiton('JoinGameScreen')}
+                    color={'#1BA39C'}
                 />
             </View>
         </SafeAreaView>

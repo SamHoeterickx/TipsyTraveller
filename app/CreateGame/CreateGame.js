@@ -19,7 +19,7 @@ export default function SelectionPages () {
         persons: {}
     })
 
-    const handleDiffuculty = ( difficulty ) => {
+    const handleDifficulty = ( difficulty ) => {
         setGameSettings({
             ...gameSettings,
             difficulty: difficulty
@@ -49,7 +49,7 @@ export default function SelectionPages () {
       };
       
       const playersSettings = {
-        setting: "nrOfPlayers",
+        setting: "nrOfPeople",
         titles: ["EASY", "MEDIUM", "HARD"],
         options: ["easy", "medium", "hard"],
         imgPathOptions: [" require('../../assets/images/3beers-flesje.png')", " require('../../assets/images/3beers-flesje.png')", " require('../../assets/images/3beers-flesje.png')"],
