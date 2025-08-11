@@ -6,7 +6,9 @@ import MainAnimation from "../shared/components/MainAnimation/MainAnimation";
 import GameSettingOptionContainer from "./components/GameSettingOptionContainer";
 
 //IMAGES
-import beerBottle from "../../assets/images/3beers-flesje.png";
+import difficultyEasyImage from "../../assets/images/beer-flesje.png"
+import difficultyMediumImage from "../../assets/images/2beers-flesje.png"
+import difficultyHardImage from "../../assets/images/3beers-flesje.png";
 
 export default function SelectionPages () {
 
@@ -32,7 +34,7 @@ export default function SelectionPages () {
         setting: "difficulty",
         titles: ["EASY", "MEDIUM", "HARD"],
         options: ["easy", "medium", "hard"],
-        imgPathOptions: ["require('../../../assets/images/3beers-flesje.png')", "require('../../../assets/images/3beers-flesje.png')", "require('../../../assets/images/3beers-flesje.png')"],
+        imgPathOptions: [difficultyEasyImage, difficultyMediumImage, difficultyHardImage],
         gameSettings,
         setGameSettings
     };
