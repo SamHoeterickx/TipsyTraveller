@@ -43,9 +43,10 @@ const style = StyleSheet.create({
         elevation: 8,
     },
     buttonCopy: {
-      color: "#000000",
-      fontSize: 30,
-      fontWeight: 600
+      color: "#393939",
+      fontSize: 25,
+      fontWeight: 600,
+        fontFamily: "dogicapixelbold",
     },
     buttonPressed: {
       backgroundColor: "#1BA39C",

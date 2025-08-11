@@ -11,12 +11,12 @@ export default function ProfileButton () {
 }
 const styles = StyleSheet.create({
     container: {
-        alignItems: 'center',
-        justifyContent: 'center',
+        alignSelf: "flex-end",
+        marginRight: 30,
 
     },
     image: {
-        width: 10,
-        height: 10,
+        width: 35,
+        height: 35,
     }
 })
