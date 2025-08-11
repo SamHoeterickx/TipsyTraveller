@@ -3,38 +3,74 @@ import { Text, View, StyleSheet } from 'react-native'
 //COMPONENTS
 import GameSettingButton from './GameSettingButton'
 
-export default function GameSettingOptionContainer ({ titleOne, tilteTwo, TitleThree, setting, optionOne, optionTwo, optionThree, imgPath, gameSettings, setGameSettings }) {
-    return(
+// export default function GameSettingOptionContainer ({ titleOne, titleTwo, titleThree, setting, optionOne, optionTwo, optionThree, imgPathOptionOne, imgPathOptionTwo, imgPathOptionThree, gameSettings, setGameSettings }) {
+//     return(
+//         <View style={ style.optionContainer }>
+//             <View style={style.settingTitle}>
+//                 <Text style={ style.settingTitleTitle}>SELECT { setting }</Text>
+//             </View>
+//             <View style={style.buttonContainer}>
+//                 <GameSettingButton
+//                     setting={ setting }
+//                     title={ titleOne }
+//                     option={ optionOne}
+//                     imgPath={ imgPathOptionOne }
+//                     gameSettings={ gameSettings }
+//                     setGameSettings={ setGameSettings }
+//                 />
+//                 <GameSettingButton
+//                     setting={ setting }
+//                     title={ titleTwo }
+//                     option={ optionTwo}
+//                     imgPath={ imgPathOptionTwo }
+//                     gameSettings={ gameSettings }
+//                     setGameSettings={ setGameSettings }
+//                 />
+//                 <GameSettingButton
+//                     setting={ setting }
+//                     title={ titleThree }
+//                     option={ optionThree}
+//                     imgPath={ imgPathOptionThree }
+//                     gameSettings={ gameSettings }
+//                     setGameSettings={ setGameSettings }
+//                 />
+//             </View>
+//         </View>
+//     )
+// }
+
+export default function GameSettingOptionContainer ({ GameSettingOption}) {
+    return (
         <View style={ style.optionContainer }>
             <View style={style.settingTitle}>
-                <Text style={ style.settingTitleTitle}>SELECT { setting }</Text>
+                <Text style={ style.settingTitleTitle}>SELECT { GameSettingOption.setting }</Text>
             </View>
             <View style={style.buttonContainer}>
                 <GameSettingButton
-                    setting={ setting }
-                    title={ titleOne }
-                    option={ optionOne}
-                    imgPath={ imgPath }
-                    gameSettings={ gameSettings }
-                    setGameSettings={ setGameSettings }
+                    setting={ GameSettingOption.setting }
+                    title={ GameSettingOption.titles[0] }
+                    option={ GameSettingOption.options[0]}
+                    imgPath={ GameSettingOption.imgPathOptions[0] }
+                    gameSettings={ GameSettingOption.gameSettings }
+                    setGameSettings={ GameSettingOption.setGameSettings }
                 />
                 <GameSettingButton
-                    setting={"difficulty"}
-                    title={ "MEDIUM" }
-                    option={ "medium"}
-                    imgPath={ require('../../../assets/images/3beers-flesje.png') }
-                    gameSettings={ gameSettings }
-                    setGameSettings={ setGameSettings }
+                    setting={ GameSettingOption.setting }
+                    title={ GameSettingOption.titles[1] }
+                    option={ GameSettingOption.options[1]}
+                    imgPath={ GameSettingOption.imgPathOptions[1] }
+                    gameSettings={ GameSettingOption.gameSettings }
+                    setGameSettings={ GameSettingOption.setGameSettings }
                 />
                 <GameSettingButton
-                    setting={"difficulty"}
-                    title={ "HARD" }
-                    option={ "hard"}
-                    imgPath={ require('../../../assets/images/3beers-flesje.png') }
-                    onPressFunction={ () => handleDiffuculty("hard")}
-                    gameSettings={ gameSettings }
-                    setGameSettings={ setGameSettings }
+                    setting={ GameSettingOption.setting }
+                    title={ GameSettingOption.titles[2] }
+                    option={ GameSettingOption.options[2]}
+                    imgPath={ GameSettingOption.imgPathOptions[2] }
+                    gameSettings={ GameSettingOption.gameSettings }
+                    setGameSettings={ GameSettingOption.setGameSettings }
                 />
+                
             </View>
         </View>
     )

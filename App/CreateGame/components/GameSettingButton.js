@@ -1,5 +1,6 @@
 import { useState } from "react"
-import { StyleSheet, View, Text, Pressable, Image } from "react-native"
+import { StyleSheet, View, Text, Pressable, Image } from "react-native";
+
 
 export default function GameSettingButton({ title, setting, option, imgPath, gameSettings, setGameSettings }) {
 

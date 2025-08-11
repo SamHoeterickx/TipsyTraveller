@@ -1,11 +1,12 @@
-import { View, StyleSheet, Image, Text, SafeAreaView } from "react-native";
+import { View, StyleSheet, Image, Text, SafeAreaView , Pressable} from "react-native";
 import { useEffect, useState } from "react";
 
 //COMPONENTS
-import GameSettingButton from "./components/GameSettingButton";
-import NextButton from "../shared/components/NextButton/NextButton";
 import MainAnimation from "../shared/components/MainAnimation/MainAnimation";
 import GameSettingOptionContainer from "./components/GameSettingOptionContainer";
+
+//IMAGES
+import beerBottle from "../../assets/images/3beers-flesje.png";
 
 export default function SelectionPages () {
 
@@ -27,25 +28,60 @@ export default function SelectionPages () {
         console.log(gameSettings)
     }, [gameSettings])
 
+    const difficultySettings = {
+        setting: "difficulty",
+        titles: ["EASY", "MEDIUM", "HARD"],
+        options: ["easy", "medium", "hard"],
+        imgPathOptions: ["require('../../../assets/images/3beers-flesje.png')", "require('../../../assets/images/3beers-flesje.png')", "require('../../../assets/images/3beers-flesje.png')"],
+        gameSettings,
+        setGameSettings
+    };
+      
+      const durationSettings = {
+        setting: "duration",
+        titles: ["EASY", "MEDIUM", "HARD"],
+        options: ["easy", "medium", "hard"],
+        imgPathOptions: [" require('../../assets/images/3beers-flesje.png')", " require('../../assets/images/3beers-flesje.png')", " require('../../assets/images/3beers-flesje.png')"],
+        gameSettings,
+        setGameSettings
+      };
+      
+      const playersSettings = {
+        setting: "nrOfPlayers",
+        titles: ["EASY", "MEDIUM", "HARD"],
+        options: ["easy", "medium", "hard"],
+        imgPathOptions: [" require('../../assets/images/3beers-flesje.png')", " require('../../assets/images/3beers-flesje.png')", " require('../../assets/images/3beers-flesje.png')"],
+        gameSettings,
+        setGameSettings
+      };
+
     return(
         <SafeAreaView style={style.mainContainer}>
             <MainAnimation />
 
-            <GameSettingOptionContainer
+            {/* <GameSettingOptionContainer
                 setting={ "difficulty" }
                 titleOne={ "EASY" }
                 titleTwo={ "MEDIUM" }
-                TitleThree={ "HARD" }
+                titleThree={ "HARD" }
                 optionOne={ "easy"}
                 optionTwo={ "medium" }
                 optionThree={ "hard" }
-                imgPath={ require('../../assets/images/3beers-flesje.png') }
+                imgPathOptionOne={ require('../../assets/images/3beers-flesje.png') }
+                imgPathOptionTwo={ require('../../assets/images/3beers-flesje.png') }
+                imgPathOptionThree={ require('../../assets/images/3beers-flesje.png') }
                 gameSettings={ gameSettings }
                 setGameSettings={ setGameSettings }
+            /> */}
+
+            <GameSettingOptionContainer
+                GameSettingOption={ difficultySettings }
             />
-
-
-            
+            <Pressable style={ style.buttonContainer }>
+                <Text>
+                    Next
+                </Text>
+            </Pressable>
         </SafeAreaView>
     )
 }
@@ -56,4 +92,12 @@ const style = StyleSheet.create({
         height: "100%",
         alignItems: "center",
     },
+    buttonContainer: {
+        width: 100,
+        height: 100,
+        borderRadius: 50,
+        backgroundColor: "#FFF1CD",
+        borderWidth: 1,
+        borderColor: "#2C3E50"
+    }
 })
