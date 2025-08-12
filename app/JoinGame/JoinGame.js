@@ -1,16 +1,26 @@
-import { SafeAreaView, StyleSheet, Text, TextInput, View } from "react-native";
+import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+import {useEffect, useState} from "react";
 
 //COMPONENTS
 import Header from "../shared/components/Header/Header";
 import MainAnimation from "../shared/components/MainAnimation/MainAnimation";
+import InputField from "../shared/components/InputField/InputField";
+import NumberInput from "../shared/components/NumberInput/NumberInput";
 
 //STYLE
 import { AndroidSafeView } from "../shared/styles/SafeAreaView/SafeAreaView";
 
 export default function JoinGame ({ navigation }) {
+    const [gamePin, setGamePin] = useState('');
+    const [userName, setUserName] = useState('');
+
+    useEffect(() => {
+        console.log(gamePin, userName);
+    }, [gamePin, userName]);
+
     return(
         <SafeAreaView style={[ style.mainContainer, AndroidSafeView.AndroidSafeView]}>
-            <Header 
+            <Header
                 showBackButton={ true }
                 navigation={ navigation }
             />
@@ -20,19 +30,24 @@ export default function JoinGame ({ navigation }) {
             <View style={ style.lowerContainer }>
                 <View style={ style.inputContainer}>
                     <Text style={ style.inputLabel }>ENTER GAME PIN</Text>
-                    <View style={ style.inputfieldContainer }>
-                        <TextInput
-                            style={ style.inputfield }
-                        />
-                    </View>
+                    <NumberInput
+                        placeholder="GAME PIN"
+                        value={ gamePin }
+                        setValue={ setGamePin }
+                    />
                 </View>
                 <View style={ style.inputContainer}>
-                    <Text style={ style.inputLabel }>ENTER GAME PIN</Text>
+                    <Text style={ style.inputLabel }>ENTER USERNAME</Text>
+                    <InputField
+                        placeholder="USERNAME "
+                        value={ userName }
+                        setValue={ setUserName }
+                    />
                 </View>
             </View>
         </SafeAreaView>
     )
-} 
+}
 
 const style = StyleSheet.create({
     mainContainer: {
@@ -56,11 +71,5 @@ const style = StyleSheet.create({
         borderBottomWidth: 1,
         paddingBottom: 5,
     },
-    inputfieldContainer: {
-        backgroundColor: "gray"
-    },
-    inputfield: {
-        width: "60%"
-    }
 
 })
