@@ -46,10 +46,11 @@ const style = StyleSheet.create({
     optionContainer: {
         marginTop: 40,
         marginBottom: 40,
-        height: "27%"
+        height: "27%",
+        width: "90%"
     },
     buttonContainer: {
-        width: "90%",
+        width: "100%",
         flex: 1,
         flexDirection: "row",
         justifyContent: "space-between",
