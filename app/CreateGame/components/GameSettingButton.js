@@ -49,7 +49,7 @@ export default function GameSettingButton({ title, setting, option, imgPath, gam
 
 const style = StyleSheet.create({
     optionButtonWrapper: {
-        width: '30%'
+        width: '31%'
     },
     button: {
         backgroundColor: "#FFFFFF",
