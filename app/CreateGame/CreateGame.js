@@ -10,47 +10,29 @@ import Header from "../shared/components/Header/Header";
 import difficultyEasyImage from "../../assets/images/beer-flesje.png"
 import difficultyMediumImage from "../../assets/images/2beers-flesje.png"
 import difficultyHardImage from "../../assets/images/3beers-flesje.png";
+import LowerButtonContainer from "../shared/components/LowerButtonContainer/LowerButtonContainer";
 
 //TYPE
 /**
- * @typedef {Object} GameSettingOption
- * @property {string} setting
- * @property {string[]} titles 
- * @property {(string|number)[]} options 
- * @property {any[]} imgPathOptions 
- * @property {Object} gameSettings 
- * @property {Function} setGameSettings 
+ * @typedef { Object } GameSettingOption
+ * @property { string } setting
+ * @property { string[] } titles 
+ * @property { (string|number)[] } options 
+ * @property { any[] } imgPathOptions 
+ * @property { Object } gameSettings 
+ * @property { Function } setGameSettings 
  */
 
 export default function SelectionPages ({ navigation }) {
 
+    const [currentSetting, setCurrentSetting] = useState("difficulty")
     const [gameSettings, setGameSettings] = useState({
         difficulty: "",
         duration: "",
         nrOfPlayers: "",
         persons: {}
     })
-    const [currentSetting, setCurrentSetting] = useState("difficulty")
 
-    const handleDifficulty = ( difficulty ) => {
-        setGameSettings({
-            ...gameSettings,
-            difficulty: difficulty
-        })
-    }
-
-    const handleNextSetting = () => {
-
-        if(currentSetting === "difficulty"){
-            setCurrentSetting("duration")
-        }else if(currentSetting === "duration"){
-            setCurrentSetting("nrOfPlayers")
-        }
-
-        if(currentSetting === "nrOfPlayers"){
-            navigation.navigate( "LobbyScreen" );
-        }
-    }
     useEffect(() => {
         console.log(currentSetting)
     }, [currentSetting])
@@ -59,6 +41,21 @@ export default function SelectionPages ({ navigation }) {
         console.log(gameSettings)
     }, [gameSettings])
 
+    const handleNextSetting = () => {
+
+        if(currentSetting === "difficulty" && gameSettings.difficulty !== ""){
+            setCurrentSetting("duration")
+        }else if(currentSetting === "duration" && gameSettings.duration !== ""){
+            setCurrentSetting("nrOfPlayers")
+        }else if(currentSetting === "nrOfPlayers" && gameSettings.nrOfPlayers !== ""){
+            navigation.navigate( "LobbyScreen" );
+        }
+        
+    }
+
+    const handleBackButton = () => {
+        navigation.goBack();
+    }
 
     /** @type {GameSettingOption} */
     const difficultySettings = {
@@ -92,7 +89,10 @@ export default function SelectionPages ({ navigation }) {
 
     return(
         <SafeAreaView style={[style.mainContainer, AndroidSafeView.AndroidSafeView]}>
-            <Header  navigation={navigation} showBackButton={true}/>
+            <Header 
+                navigation={ navigation } 
+                showBackButton={ false }
+            />
             <MainAnimation />
 
             {
@@ -105,13 +105,13 @@ export default function SelectionPages ({ navigation }) {
                 )
             }
 
-            <View>
-                <TouchableOpacity
-                    onPress={ handleNextSetting }
-                >
-                    <Text>Next</Text>
-                </TouchableOpacity>
-            </View>
+            <LowerButtonContainer 
+                LeftButtonVisible={ true }
+                LeftButtonCopy={ "<-" }
+                handleLeftButton={ handleBackButton }
+                RightButtonCopy={ "->" }
+                handleRightButton={ handleNextSetting }
+            />
         </SafeAreaView>
     )
 }

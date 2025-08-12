@@ -25,10 +25,9 @@ export default function GameSettingButton({ title, setting, option, imgPath, gam
     }
 
     const isActive = gameSettings[setting] === option;
-    console.log(gameSettings[setting], "hehe", option);
 
     return (
-        <View >
+        <View style={ style.optionButtonWrapper} >
             <Pressable
                 onPress={ () => handleButton() }
                 style={[
@@ -49,9 +48,12 @@ export default function GameSettingButton({ title, setting, option, imgPath, gam
 } 
 
 const style = StyleSheet.create({
+    optionButtonWrapper: {
+        width: '30%'
+    },
     button: {
         backgroundColor: "#FFFFFF",
-        width: 105,
+        width: "100%",
         height: 150,
         borderRadius: 12,
         color: "#000",
