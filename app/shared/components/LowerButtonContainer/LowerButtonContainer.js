@@ -6,25 +6,28 @@ export default function LowerButtonContainer ({ LeftButtonVisible, LeftButtonCop
         container: {
             width: "90%",
             flexDirection: "row",
-            justifyContent: LeftButtonVisible ? "flex-between" : "flex-end"
+            justifyContent: LeftButtonVisible === true ? "space-between" : "flex-end"
         },
         buttonLeftContainer: {
             width: "40%",
-            backgroundColor: "red"
         },  
         buttonRightContainer: {
             width: "40%",
             alignItems: "flex-end",
-    
-            backgroundColor: "orange"
         },
         button: {
-            // width: 100,
-            // height: 100,
-            // borderRadius: 50,
-            // backgroundColor: "#FFF1CD",
-            // borderWidth: 1,
-            // borderColor: "#2C3E50"
+            width: 150,
+            height: 55,
+            borderRadius: 50,
+            backgroundColor: "#FFF1CD",
+            borderWidth: 4,
+            borderColor: "#2C3E50",
+            alignItems: "center",
+            justifyContent: "center"
+        },
+        buttonCopy: {
+            fontFamily: "dogicapixelbold",
+            fontSize: 25
         }
     })
 
@@ -35,9 +38,9 @@ export default function LowerButtonContainer ({ LeftButtonVisible, LeftButtonCop
                 <View style={ style.buttonLeftContainer}>
                     <Pressable 
                         style={ style.button }
-                        onPress={ handleBackButton }
+                        onPress={ handleLeftButton }
                     >
-                        <Text>
+                        <Text style={ style.buttonCopy }>
                             { LeftButtonCopy }
                         </Text>
                     </Pressable>
@@ -48,7 +51,7 @@ export default function LowerButtonContainer ({ LeftButtonVisible, LeftButtonCop
                     style={ style.button }
                     onPress={ handleRightButton }
                 >
-                    <Text>
+                    <Text style={ style.buttonCopy }>
                         { RightButtonCopy }
                     </Text>
                 </Pressable>

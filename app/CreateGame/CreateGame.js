@@ -54,7 +54,7 @@ export default function SelectionPages ({ navigation }) {
     }
 
     const handleBackButton = () => {
-        console.log("back")
+        navigation.goBack();
     }
 
     /** @type {GameSettingOption} */
@@ -89,7 +89,10 @@ export default function SelectionPages ({ navigation }) {
 
     return(
         <SafeAreaView style={[style.mainContainer, AndroidSafeView.AndroidSafeView]}>
-            <Header  navigation={navigation} showBackButton={true}/>
+            <Header 
+                navigation={ navigation } 
+                showBackButton={ false }
+            />
             <MainAnimation />
 
             {
@@ -102,16 +105,8 @@ export default function SelectionPages ({ navigation }) {
                 )
             }
 
-            {/* <View>
-                <TouchableOpacity
-                    onPress={ handleNextSetting }
-                >
-                    <Text>Next</Text>
-                </TouchableOpacity>
-            </View> */}
-
             <LowerButtonContainer 
-                LeftButtonVisible={ false }
+                LeftButtonVisible={ true }
                 LeftButtonCopy={ "<-" }
                 handleLeftButton={ handleBackButton }
                 RightButtonCopy={ "->" }
