@@ -40,7 +40,13 @@ export default function SelectionPages ({ navigation }) {
     useEffect(() => {
         console.log(gameSettings)
     }, [gameSettings])
-
+    const generateRandomNumber = () => {
+        let code ="";
+        for(let i =0;i<4; i++){
+            code += Math.floor(Math.random() * (10));
+        }
+        return code;
+    }
     const handleNextSetting = () => {
 
         if(currentSetting === "difficulty" && gameSettings.difficulty !== ""){

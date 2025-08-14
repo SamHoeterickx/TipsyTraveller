@@ -39,5 +39,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         textAlign: "center",
         fontFamily: "dogicapixelbold",
+        placeholderLetterSpacing: 0,
+        letterSpacing: 0,
     }
 });

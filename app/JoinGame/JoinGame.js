@@ -1,7 +1,8 @@
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView, StyleSheet, Text, View} from "react-native";
 import {useEffect, useState} from "react";
 
 //COMPONENTS
+import Button from "../shared/components/Button/Button"
 import Header from "../shared/components/Header/Header";
 import MainAnimation from "../shared/components/MainAnimation/MainAnimation";
 import InputField from "../shared/components/InputField/InputField";
@@ -17,6 +18,16 @@ export default function JoinGame ({ navigation }) {
     useEffect(() => {
         console.log(gamePin, userName);
     }, [gamePin, userName]);
+
+    const handleJoin = () => {
+        if (userName === "") {
+            return;
+        }else if (gamePin === "") {
+            return;
+        }else {
+
+        }
+    }
 
     return(
         <SafeAreaView style={[ style.mainContainer, AndroidSafeView.AndroidSafeView]}>
@@ -44,6 +55,11 @@ export default function JoinGame ({ navigation }) {
                         setValue={ setUserName }
                     />
                 </View>
+
+                <Button
+                    buttonCopy={ 'Join' }
+                    handlePress={ handleJoin }
+                />
             </View>
         </SafeAreaView>
     )
@@ -73,3 +89,4 @@ const style = StyleSheet.create({
     },
 
 })
+
