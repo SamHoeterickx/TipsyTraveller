@@ -20,10 +20,10 @@ export default function Header ({showBackButton = false, navigation}) {
             justifyContent: showBackButton === true ? "space-between" : "flex-end",
             width: '100%',
             height: 35,
+            paddingHorizontal: 20
         },
         icons: {
             flexDirection: 'row',
-            marginRight: 20,
             gap:20,
         },
         image: {

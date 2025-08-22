@@ -4,19 +4,19 @@ export default function LowerButtonContainer ({ LeftButtonVisible, LeftButtonCop
 
     const style = StyleSheet.create({
         container: {
-            width: "90%",
+            width: "100%",
             flexDirection: "row",
             justifyContent: LeftButtonVisible === true ? "space-between" : "flex-end"
         },
         buttonLeftContainer: {
-            width: "40%",
+            width: "45%",
         },  
         buttonRightContainer: {
-            width: "40%",
+            width: "45%",
             alignItems: "flex-end",
         },
         button: {
-            width: 150,
+            width: 170,
             height: 55,
             borderRadius: 50,
             backgroundColor: "#FFF1CD",
@@ -25,7 +25,7 @@ export default function LowerButtonContainer ({ LeftButtonVisible, LeftButtonCop
             alignItems: "center",
             justifyContent: "center"
         },
-        buttonCopy: {
+        buttonCopy: { 
             fontFamily: "dogicapixelbold",
             fontSize: 25
         }

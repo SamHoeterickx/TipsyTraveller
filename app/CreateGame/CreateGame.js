@@ -111,13 +111,15 @@ export default function SelectionPages ({ navigation }) {
                 )
             }
 
-            <LowerButtonContainer 
-                LeftButtonVisible={ true }
-                LeftButtonCopy={ "<-" }
-                handleLeftButton={ handleBackButton }
-                RightButtonCopy={ "->" }
-                handleRightButton={ handleNextSetting }
-            />
+            <View style={ style.lowerButtonContainerWrapper }>
+                <LowerButtonContainer 
+                    LeftButtonVisible={ true }
+                    LeftButtonCopy={ "<-" }
+                    handleLeftButton={ handleBackButton }
+                    RightButtonCopy={ "->" }
+                    handleRightButton={ handleNextSetting }
+                />
+            </View>
         </SafeAreaView>
     )
 }
@@ -135,5 +137,8 @@ const style = StyleSheet.create({
         backgroundColor: "#FFF1CD",
         borderWidth: 1,
         borderColor: "#2C3E50"
+    },
+    lowerButtonContainerWrapper: {
+        paddingHorizontal: 20
     }
 })
