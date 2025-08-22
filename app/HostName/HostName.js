@@ -12,33 +12,59 @@ import NumberInput from "../shared/components/NumberInput/NumberInput";
 //STYLE
 import { AndroidSafeView } from "../shared/styles/SafeAreaView/SafeAreaView";
 
-export default function JoinGame ({ navigation }) {
-    const [gamePin, setGamePin] = useState('');
+export default function HostName ({ navigation, route }) {
     const [userName, setUserName] = useState('');
+    const gameSettings = route.params;
 
     useEffect(() => {
-        console.log(gamePin, userName);
-    }, [gamePin, userName]);
+        //console.log( userName);
+    }, [userName]);
 
-    const handleJoin = async () => {
-         let gameExists = false;
-        if (userName === ""|| gamePin === "" ){
+    const handleCreate = async () => {
+        let gameExists = false;
+        if (userName === "" ){
+            //TODO popup toevoegen
             return;
-        }else {
-            const snapshot = await get(child(ref(db),`games/${gamePin}`));
-
-            if(snapshot.exists()){
-                gameExists = true;
-                const gameSettings = snapshot.val();
-                console.log("game exists", gameSettings);
-                navigation.navigate( "LobbyScreen" , {gameID: gamePin, gameSettings});
-            }
-            else {
-                console.log("game not found");
-            }
+        }try {
+            const newGameID = await generateUniqueGame(gameSettings);
+            navigation.navigate("LobbyScreen", {
+                gameID: newGameID,
+                hostName: userName,
+                ...gameSettings,
+            });
+        } catch (error) {
+            console.log("error creating game",error);
         }
     }
+    const generateRandomNumber = () => {
+        let code ="";
+        for(let i =0;i<4; i++){
+            code += Math.floor(Math.random() * (10));
+        }
+        return code;
+    }
+    const generateUniqueGame = async (gameSettings) => {
+        let newGameID = generateRandomNumber();
+        let gameExists = true;
 
+        while(gameExists){
+            const snapshot = await get(child(ref(db),`games/${newGameID}`));
+            if(!snapshot.exists()){
+                gameExists = false;
+                await set(ref(db, `games/${newGameID}`),{
+                    ...gameSettings,
+                    HostName: userName,
+                    createdAt: Date.now(),
+                    status: "lobby"
+                });
+                return newGameID;
+            }
+            else {
+                newGameID = generateRandomNumber();
+            }
+        }
+
+    }
     return(
         <SafeAreaView style={[ style.mainContainer, AndroidSafeView.AndroidSafeView]}>
             <Header
@@ -49,14 +75,7 @@ export default function JoinGame ({ navigation }) {
 
 
             <View style={ style.lowerContainer }>
-                <View style={ style.inputContainer}>
-                    <Text style={ style.inputLabel }>ENTER GAME PIN</Text>
-                    <NumberInput
-                        placeholder="GAME PIN"
-                        value={ gamePin }
-                        setValue={ setGamePin }
-                    />
-                </View>
+
                 <View style={ style.inputContainer}>
                     <Text style={ style.inputLabel }>ENTER USERNAME</Text>
                     <InputField
@@ -67,8 +86,8 @@ export default function JoinGame ({ navigation }) {
                 </View>
 
                 <Button
-                    buttonCopy={ 'Join' }
-                    handlePress={ handleJoin }
+                    buttonCopy={ 'Create' }
+                    handlePress={ handleCreate }
                 />
             </View>
         </SafeAreaView>

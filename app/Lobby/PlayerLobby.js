@@ -1,12 +1,12 @@
-import { SafeAreaView } from "react-native-safe-area-context";
+
 import { AndroidSafeView } from "../shared/styles/SafeAreaView/SafeAreaView";
 import {View, Text, StyleSheet } from "react-native";
 import React, { useEffect, useState } from "react";
 import { ref, onValue, off } from "firebase/database";
 import { db } from "../../firebaseConfig";
 
-export default function Lobby ({navigation, route}) {
-    const { gameID,hostName,gameSettings} = route.params;
+export default function PlayerLobby ({navigation, route}) {
+    const { gameID,gameSettings} = route.params;
     const [gameData, setGameData] = useState(gameSettings);
     useEffect(() => {
         const game = ref(db, `games/${gameID}`);
