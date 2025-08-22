@@ -38,6 +38,12 @@ export default function Lobby ({ navigation }) {
                 <TeamContainer
                     index={ 1 }
                 />
+                <TeamContainer
+                    index={ 2 }
+                />
+                <TeamContainer
+                    index={ 3 }
+                />
                 
             </View>
 

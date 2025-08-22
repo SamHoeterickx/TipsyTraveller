@@ -14,10 +14,10 @@ export default function TeamContainer ({ index }) {
                 <View style={ style.line }></View>
             </View>
             <View style={ style.teamMemberContainer }>
-                <PlayerBox name={ "Robbe"} />
-                <PlayerBox name={ "Niels"} />
-                <PlayerBox name={ "Guy"} />
-                <PlayerBox name={ "Ria"} />
+                <PlayerBox name={ "Jannes"} />
+                <PlayerBox name={ "Giel"} />
+                <PlayerBox name={ "Alexander"} />
+                <PlayerBox name={ "Jefke"} />
             </View>
         </View>
     )
@@ -35,6 +35,7 @@ const style = StyleSheet.create({
         shadowOffset: [10, 0],
         shadowOpacity: 0.4,
         shadowRadius: 6,
+        marginBottom: 20
     },
     teamHeader: {
         marginBottom: 10
