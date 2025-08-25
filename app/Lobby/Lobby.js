@@ -15,22 +15,69 @@ import BackButton from "../shared/components/BackButton/BackButton";
 export default function Lobby ({ navigation, route }) {
     const { gameID,isHost,hostName,gameSettings} = route.params;
     const [gameData, setGameData] = useState(gameSettings);
+    const [teamCounter, setTeamCounter] = useState(2);
     const [userName, setUserName] = useState('');
+    const [teamMembers, setTeamMembers] = useState();
+    const [inputVisibility, setInputVisibility] = useState(true);
+    useEffect(() => {
+        const players = ref(db, `players/${gameID}`);
+        const subscribe = onValue(players, (snapshot) => {
+            if (snapshot.exists) {
+                setTeamMembers(snapshot.val());
+                console.log(snapshot.val());
+            }
+            else {
+                console.log("no Game found")
+            }
+        });
+        return () => off(players);
+    }, [gameID]);
     useEffect(() => {
         const game = ref(db, `games/${gameID}`);
         const unsubscribe = onValue(game, (snapshot) => {
             if (snapshot.exists) {
-                setGameData(snapshot.val());
+                //console.log(snapshot.val());
+               setGameData(snapshot.val());
             }else {
                 console.log("No such game found");
             }
         });
+
         return () => off(game);
+
     }, [gameID]);
+    useEffect(() => {
+        //console.log(gameData);
+    }, [gameData]);
     const handleAddPlayer  = async () => {
-        const playersRef = ref(db, `players/${gameID}`);
+        setTeamCounter(teamCounter + 1);
+        const teamNr = giveTeamNr();
+        //console.log(teamNr);
+        const playersRef = ref(db, `players/${gameID}/team${teamNr}`);
         push(playersRef, userName);
         setUserName("");
+    }
+    const giveTeamNr = () => {
+
+        if (gameData.nrOfPlayers === "1-4" || gameData.nrOfPlayers === "4-8") {
+            if(teamCounter % 2 === 0){
+                return 2;
+            }
+            else {
+                return 1;
+            }
+        }
+        if (gameData.nrOfPlayers === "8-12") {
+            if(teamCounter=== 3 || teamCounter === 6|| teamCounter===9 ||teamCounter === 12){
+                return 3;
+            }
+            else if (teamCounter=== 2 || teamCounter ===5|| teamCounter===8 ||teamCounter === 11){
+                return 2;
+            }
+            else {
+                return 1;2951
+            }
+        }
     }
     const handleBackButton = () => {
         console.log("back");
@@ -55,17 +102,22 @@ export default function Lobby ({ navigation, route }) {
 
             <View style={ style.teamContainerWrapper }>
                 <TeamContainer
+                    team={ teamMembers && teamMembers.team1 }
                     index={ 1 }
                 />
                 <TeamContainer
+                    team={ teamMembers && teamMembers.team2 }
                     index={ 2 }
                 />
                 <TeamContainer
+                    team={ teamMembers && teamMembers.team3 }
                     index={ 3 }
                 />
+
                 
             </View>
-            {isHost && (
+
+            {isHost && inputVisibility === true && (
                 <View style={ style.inputContainer}>
                     {/*<Text style={ style.inputLabel }>ENTER USERNAME</Text>*/}
                     <View style={ style.inputField }>

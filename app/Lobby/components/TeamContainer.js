@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 //COMPONENTS
 import PlayerBox from "./PlayerBox";
 
-export default function TeamContainer ({ index }) {
+export default function TeamContainer ({ team, index }) {
 
     return (
         <View style={ style.teamContainer}>
@@ -14,10 +14,9 @@ export default function TeamContainer ({ index }) {
                 <View style={ style.line }></View>
             </View>
             <View style={ style.teamMemberContainer }>
-                <PlayerBox name={ "Jannes"} />
-                <PlayerBox name={ "Giel"} />
-                <PlayerBox name={ "Alexander"} />
-                <PlayerBox name={ "Jefke"} />
+                {team && Object.values(team).map((name) => (
+                    <PlayerBox name={name} key={name}/>
+                ))}
             </View>
         </View>
     )

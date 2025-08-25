@@ -1,6 +1,6 @@
 import { SafeAreaView, StyleSheet, Text, View} from "react-native";
 import {useEffect, useState} from "react";
-import { ref, set, get, onDisconnect, child} from "firebase/database";
+import {ref, set, get, onDisconnect, child, push} from "firebase/database";
 import { db } from "../../firebaseConfig";
 //COMPONENTS
 import Button from "../shared/components/Button/Button"
@@ -27,6 +27,8 @@ export default function HostName ({ navigation, route }) {
             return;
         }try {
             const newGameID = await generateUniqueGame(gameSettings);
+            const playersRef = ref(db, `players/${newGameID}/team${1}`);
+            push(playersRef, userName );
             navigation.navigate("LobbyScreen", {
                 gameID: newGameID,
                 isHost: isHost,
