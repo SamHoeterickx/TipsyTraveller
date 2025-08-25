@@ -11,7 +11,8 @@ import difficultyEasyImage from "../../assets/images/beer-flesje.png"
 import difficultyMediumImage from "../../assets/images/2beers-flesje.png"
 import difficultyHardImage from "../../assets/images/3beers-flesje.png";
 import LowerButtonContainer from "../shared/components/LowerButtonContainer/LowerButtonContainer";
-
+import { ref, set, get, onDisconnect, child} from "firebase/database";
+import { db } from "../../firebaseConfig";
 //TYPE
 /**
  * @typedef { Object } GameSettingOption
@@ -40,21 +41,21 @@ export default function SelectionPages ({ navigation }) {
     useEffect(() => {
         console.log(gameSettings)
     }, [gameSettings])
-    const generateRandomNumber = () => {
-        let code ="";
-        for(let i =0;i<4; i++){
-            code += Math.floor(Math.random() * (10));
-        }
-        return code;
-    }
-    const handleNextSetting = () => {
+
+    const handleNextSetting =async () => {
 
         if(currentSetting === "difficulty" && gameSettings.difficulty !== ""){
             setCurrentSetting("duration")
         }else if(currentSetting === "duration" && gameSettings.duration !== ""){
             setCurrentSetting("nrOfPlayers")
         }else if(currentSetting === "nrOfPlayers" && gameSettings.nrOfPlayers !== ""){
-            navigation.navigate( "LobbyScreen" );
+            try{
+
+                navigation.navigate( "HostName" ,  gameSettings);
+            } catch(err){
+                console.log(err);
+            }
+
         }
         
     }
@@ -66,7 +67,7 @@ export default function SelectionPages ({ navigation }) {
     /** @type {GameSettingOption} */
     const difficultySettings = {
         setting: "difficulty",
-        titles: ["EASY", "MEDIUM", "HARD"],
+        titles: ["EASY", "MEDIUM", "LETHAL"],
         options: ["easy", "medium", "hard"],
         imgPathOptions: [difficultyEasyImage, difficultyMediumImage, difficultyHardImage],
         gameSettings,
