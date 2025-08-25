@@ -87,7 +87,7 @@ const style = StyleSheet.create({
         width: "90%"
     },
     inputContainer: {
-        paddingBottom: 50,
+        paddingBottom: 35,
     },
     inputLabel: {
         fontSize: 18,
