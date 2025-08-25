@@ -15,7 +15,7 @@ import { AndroidSafeView } from "../shared/styles/SafeAreaView/SafeAreaView";
 export default function JoinGame ({ navigation }) {
     const [gamePin, setGamePin] = useState('');
     const [userName, setUserName] = useState('');
-
+    const isHost = false;
     useEffect(() => {
         console.log(gamePin, userName);
     }, [gamePin, userName]);
@@ -31,7 +31,7 @@ export default function JoinGame ({ navigation }) {
                 gameExists = true;
                 const gameSettings = snapshot.val();
                 console.log("game exists", gameSettings);
-                navigation.navigate( "LobbyScreen" , {gameID: gamePin, gameSettings});
+                navigation.navigate( "LobbyScreen" , {gameID: gamePin, isHost: isHost, gameSettings});
             }
             else {
                 console.log("game not found");

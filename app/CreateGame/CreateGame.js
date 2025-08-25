@@ -11,8 +11,7 @@ import difficultyEasyImage from "../../assets/images/beer-flesje.png"
 import difficultyMediumImage from "../../assets/images/2beers-flesje.png"
 import difficultyHardImage from "../../assets/images/3beers-flesje.png";
 import LowerButtonContainer from "../shared/components/LowerButtonContainer/LowerButtonContainer";
-import { ref, set, get, onDisconnect, child} from "firebase/database";
-import { db } from "../../firebaseConfig";
+
 //TYPE
 /**
  * @typedef { Object } GameSettingOption

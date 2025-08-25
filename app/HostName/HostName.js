@@ -15,7 +15,7 @@ import { AndroidSafeView } from "../shared/styles/SafeAreaView/SafeAreaView";
 export default function HostName ({ navigation, route }) {
     const [userName, setUserName] = useState('');
     const gameSettings = route.params;
-
+    const isHost = true;
     useEffect(() => {
         //console.log( userName);
     }, [userName]);
@@ -29,6 +29,7 @@ export default function HostName ({ navigation, route }) {
             const newGameID = await generateUniqueGame(gameSettings);
             navigation.navigate("LobbyScreen", {
                 gameID: newGameID,
+                isHost: isHost,
                 hostName: userName,
                 ...gameSettings,
             });
