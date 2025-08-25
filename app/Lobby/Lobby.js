@@ -14,11 +14,13 @@ import BackButton from "../shared/components/BackButton/BackButton";
 
 export default function Lobby ({ navigation, route }) {
     const { gameID,isHost,hostName,gameSettings} = route.params;
+    
     const [gameData, setGameData] = useState(gameSettings);
     const [teamCounter, setTeamCounter] = useState(2);
     const [userName, setUserName] = useState('');
     const [teamMembers, setTeamMembers] = useState();
     const [inputVisibility, setInputVisibility] = useState(true);
+
     useEffect(() => {
         const players = ref(db, `players/${gameID}`);
         const subscribe = onValue(players, (snapshot) => {
@@ -30,8 +32,10 @@ export default function Lobby ({ navigation, route }) {
                 console.log("no Game found")
             }
         });
+
         return () => off(players);
     }, [gameID]);
+
     useEffect(() => {
         const game = ref(db, `games/${gameID}`);
         const unsubscribe = onValue(game, (snapshot) => {
@@ -46,9 +50,7 @@ export default function Lobby ({ navigation, route }) {
         return () => off(game);
 
     }, [gameID]);
-    useEffect(() => {
-        //console.log(gameData);
-    }, [gameData]);
+
     const handleAddPlayer  = async () => {
         setTeamCounter(teamCounter + 1);
         const teamNr = giveTeamNr();
@@ -57,6 +59,7 @@ export default function Lobby ({ navigation, route }) {
         push(playersRef, userName);
         setUserName("");
     }
+
     const giveTeamNr = () => {
 
         if (gameData.nrOfPlayers === "1-4" || gameData.nrOfPlayers === "4-8") {
@@ -75,15 +78,17 @@ export default function Lobby ({ navigation, route }) {
                 return 2;
             }
             else {
-                return 1;2951
+                return 1;
             }
         }
     }
+
     const handleBackButton = () => {
         console.log("back");
     }
+
     const handleNextButton = () => {
-        console.log("back");
+        console.log("next");
     }
 
     return (
@@ -117,23 +122,25 @@ export default function Lobby ({ navigation, route }) {
                 
             </View>
 
-            {isHost && inputVisibility === true && (
-                <View style={ style.inputContainer}>
-                    {/*<Text style={ style.inputLabel }>ENTER USERNAME</Text>*/}
-                    <View style={ style.inputField }>
-                        <InputField
-                            placeholder="ADD PLAYERS"
-                            value={ userName }
-                            setValue={ setUserName }
-                        />
+            {
+                isHost && inputVisibility === true && (
+                    <View style={ style.inputContainer}>
+                        {/*<Text style={ style.inputLabel }>ENTER USERNAME</Text>*/}
+                        <View style={ style.inputField }>
+                            <InputField
+                                placeholder="ADD PLAYERS"
+                                value={ userName }
+                                setValue={ setUserName }
+                            />
+                        </View>
+                        <View style={ style.deleteButton }>
+                            <TouchableOpacity onPress={handleAddPlayer}>
+                                <Text style={ style.plusIcon }>+</Text>
+                            </TouchableOpacity>
+                        </View>
                     </View>
-                    <View style={ style.deleteButton }>
-                        <TouchableOpacity onPress={handleAddPlayer}>
-                            <Text style={ style.plusIcon }>+</Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>
-            )}
+                )
+            }
             <LowerButtonContainer 
                 LeftButtonVisible={ true }
                 LeftButtonCopy={ "RULES" }
