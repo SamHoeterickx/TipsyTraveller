@@ -6,7 +6,7 @@ import TeamContainer from "./components/TeamContainer";
 import LowerButtonContainer from "../shared/components/LowerButtonContainer/LowerButtonContainer";
 import InputField from "../shared/components/InputField/InputField";
 //FIREBASE
-import {set, ref,push, onValue, off } from "firebase/database";
+import {set, ref,push, onValue, off, get} from "firebase/database";
 import { db } from "../../firebaseConfig";
 //STYLES
 import { AndroidSafeView } from "../shared/styles/SafeAreaView/SafeAreaView";
@@ -52,18 +52,29 @@ export default function Lobby ({ navigation, route }) {
     }, [gameID]);
 
     const handleAddPlayer  = async () => {
-        setTeamCounter(teamCounter + 1);
-        const teamNr = giveTeamNr();
-        //console.log(teamNr);
-        const playersRef = ref(db, `players/${gameID}/team${teamNr}`);
-        push(playersRef, userName);
+        const playersRef = ref(db, `players/${gameID}`);
+        const snapshot = await get(playersRef);
+        let currentCount = 0;
+        if (snapshot.exists()) {
+            const playersData = snapshot.val();
+            Object.keys(playersData).forEach((key) => {
+                if (key.startsWith("team")){
+                    currentCount += Object.keys(playersData[key] || {}).length;
+                }
+            });
+        }
+        const newCount = currentCount + 1;
+        await set(ref(db, `players/${gameID}/playerCounter`), newCount);
+        const teamNr = giveTeamNr(newCount);
+        await push(ref(db, `players/${gameID}/team${teamNr}`),userName);
         setUserName("");
+
     }
 
-    const giveTeamNr = () => {
+    const giveTeamNr = (playerCount) => {
 
         if (gameData.nrOfPlayers === "1-4" || gameData.nrOfPlayers === "4-8") {
-            if(teamCounter % 2 === 0){
+            if(playerCount % 2 === 0){
                 return 2;
             }
             else {
@@ -71,10 +82,10 @@ export default function Lobby ({ navigation, route }) {
             }
         }
         if (gameData.nrOfPlayers === "8-12") {
-            if(teamCounter=== 3 || teamCounter === 6|| teamCounter===9 ||teamCounter === 12){
+            if(playerCount=== 3 || playerCount === 6|| playerCount===9 ||playerCount === 12){
                 return 3;
             }
-            else if (teamCounter=== 2 || teamCounter ===5|| teamCounter===8 ||teamCounter === 11){
+            else if (playerCount=== 2 || playerCount ===5|| playerCount===8 ||playerCount === 11){
                 return 2;
             }
             else {
