@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 //COMPONENTS
 import PlayerBox from "./PlayerBox";
 
-export default function TeamContainer ({ team, index }) {
+export default function TeamContainer ({ team, index, onRemovePlayer }) {
 
     return (
         <View style={ style.teamContainer}>
@@ -15,7 +15,7 @@ export default function TeamContainer ({ team, index }) {
             </View>
             <View style={ style.teamMemberContainer }>
                 {team && Object.values(team).map((name) => (
-                    <PlayerBox name={name} key={name}/>
+                    <PlayerBox name={name} key={name} teamNr={index} onRemovePlayer={ onRemovePlayer } />
                 ))}
             </View>
         </View>

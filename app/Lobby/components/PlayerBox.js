@@ -1,7 +1,8 @@
-import { StyleSheet, Text, View } from "react-native";
+import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
+export default function PlayerBox ({ name, onRemovePlayer, teamNr }) {
+    const removePlayer = async () => {
 
-export default function PlayerBox ({ name }) {
-
+    }
     return (
         <View style={ style.playerBoxContainer }>
             <Text style={ style.text }>
@@ -9,9 +10,12 @@ export default function PlayerBox ({ name }) {
             </Text>
 
             <View style={ style.removePlayerContainer }>
-                <Text style={ style.text }>
-                    X
-                </Text>
+                <TouchableOpacity onPress={() => onRemovePlayer(teamNr, name)}>
+                    <Text style={ style.text }>
+                        X
+                    </Text>
+                </TouchableOpacity>
+
             </View>
         </View>
     )

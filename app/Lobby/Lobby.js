@@ -6,7 +6,7 @@ import TeamContainer from "./components/TeamContainer";
 import LowerButtonContainer from "../shared/components/LowerButtonContainer/LowerButtonContainer";
 import InputField from "../shared/components/InputField/InputField";
 //FIREBASE
-import {set, ref,push, onValue, off, get} from "firebase/database";
+import {set, ref,push,child, onValue, off, get, runTransaction, remove} from "firebase/database";
 import { db } from "../../firebaseConfig";
 //STYLES
 import { AndroidSafeView } from "../shared/styles/SafeAreaView/SafeAreaView";
@@ -14,9 +14,8 @@ import BackButton from "../shared/components/BackButton/BackButton";
 
 export default function Lobby ({ navigation, route }) {
     const { gameID,isHost,hostName,gameSettings} = route.params;
-    
+
     const [gameData, setGameData] = useState(gameSettings);
-    const [teamCounter, setTeamCounter] = useState(2);
     const [userName, setUserName] = useState('');
     const [teamMembers, setTeamMembers] = useState();
     const [inputVisibility, setInputVisibility] = useState(true);
@@ -24,9 +23,9 @@ export default function Lobby ({ navigation, route }) {
     useEffect(() => {
         const players = ref(db, `players/${gameID}`);
         const subscribe = onValue(players, (snapshot) => {
-            if (snapshot.exists) {
-                setTeamMembers(snapshot.val());
-                console.log(snapshot.val());
+            if (snapshot.exists()) {
+                const data = snapshot.val();
+                setTeamMembers(data);
             }
             else {
                 console.log("no Game found")
@@ -39,7 +38,7 @@ export default function Lobby ({ navigation, route }) {
     useEffect(() => {
         const game = ref(db, `games/${gameID}`);
         const unsubscribe = onValue(game, (snapshot) => {
-            if (snapshot.exists) {
+            if (snapshot.exists()) {
                 //console.log(snapshot.val());
                setGameData(snapshot.val());
             }else {
@@ -70,7 +69,21 @@ export default function Lobby ({ navigation, route }) {
         setUserName("");
 
     }
+    const handleRemovePlayer = async (teamNr, playerName) => {
+        const teamRef = ref(db, `players/${gameID}/team${teamNr}`);
+        const snapshot = await get(teamRef);
+        if (snapshot.exists()) {
+            const playersData = snapshot.val();
+            const playerKey = Object.keys(playersData).find((key) => playersData[key] === playerName);
+            if (playerKey) {
+                await remove(child(teamRef, playerKey));
 
+                await runTransaction(ref(db, `players/${gameID}/playerCounter`), (currentValue) => {
+                    return Math.max((currentValue || 0) - 1, 0);
+                });
+            }
+        }
+    }
     const giveTeamNr = (playerCount) => {
 
         if (gameData.nrOfPlayers === "1-4" || gameData.nrOfPlayers === "4-8") {
@@ -120,15 +133,20 @@ export default function Lobby ({ navigation, route }) {
                 <TeamContainer
                     team={ teamMembers && teamMembers.team1 }
                     index={ 1 }
+                    onRemovePlayer={handleRemovePlayer}
                 />
                 <TeamContainer
                     team={ teamMembers && teamMembers.team2 }
                     index={ 2 }
+                    onRemovePlayer={handleRemovePlayer}
                 />
-                <TeamContainer
-                    team={ teamMembers && teamMembers.team3 }
-                    index={ 3 }
-                />
+                {gameData && gameData.nrOfPlayers === "8-12" && (
+                    <TeamContainer
+                        team={ teamMembers && teamMembers.team3 }
+                        index={ 3 }
+                        onRemovePlayer={handleRemovePlayer}
+                    />
+                ) }
 
                 
             </View>

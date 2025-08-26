@@ -31,6 +31,7 @@ export default function JoinGame ({ navigation }) {
                 gameExists = true;
                 const gameSettings = snapshot.val();
                 console.log("game exists", gameSettings);
+
                 navigation.navigate( "LobbyScreen" , {gameID: gamePin, isHost: isHost, gameSettings});
             }
             else {
