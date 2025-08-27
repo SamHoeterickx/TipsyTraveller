@@ -27,7 +27,7 @@ export default function HostName ({ navigation, route }) {
             return;
         }try {
             const newGameID = await generateUniqueGame(gameSettings);
-            await set(ref(db, `players/${newGameID}`), {playerCounter: 0})
+            await set(ref(db, `players/${newGameID}`), {playerCounter: 0, team1: "", team2: "", team3: ""});
             const playersRef = ref(db, `players/${newGameID}/team${1}`);
             push(playersRef, userName );
             navigation.navigate("LobbyScreen", {

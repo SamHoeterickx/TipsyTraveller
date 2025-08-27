@@ -86,8 +86,8 @@ export default function SelectionPages ({ navigation }) {
     /** @type {GameSettingOption} */
     const playerSettings = {
         setting: "nrOfPlayers",
-        titles: ["1-4", "4-8", "8-12"],
-        options: ["1-4", "4-8", "8-12"],
+        titles: ["1-4", "5-8", "9-12"],
+        options: ["1-4", "5-8", "9-12"],
         imgPathOptions: [difficultyEasyImage, difficultyMediumImage, difficultyHardImage],
         gameSettings,
         setGameSettings

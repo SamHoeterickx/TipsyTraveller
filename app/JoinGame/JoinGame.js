@@ -1,6 +1,6 @@
 import { SafeAreaView, StyleSheet, Text, View} from "react-native";
 import {useEffect, useState} from "react";
-import { ref, set, get, onDisconnect, child} from "firebase/database";
+import {ref, set, get, onDisconnect, child, push} from "firebase/database";
 import { db } from "../../firebaseConfig";
 //COMPONENTS
 import Button from "../shared/components/Button/Button"
@@ -31,7 +31,7 @@ export default function JoinGame ({ navigation }) {
                 gameExists = true;
                 const gameSettings = snapshot.val();
                 console.log("game exists", gameSettings);
-
+                await addPlayerToRightTeam(gameSettings);
                 navigation.navigate( "LobbyScreen" , {gameID: gamePin, isHost: isHost, gameSettings});
             }
             else {
@@ -39,7 +39,33 @@ export default function JoinGame ({ navigation }) {
             }
         }
     }
-
+    const  addPlayerToRightTeam = async (gameSettings) => {
+        const playersRef = ref(db, `players/${gamePin}`);
+        const snapshot = await get(playersRef);
+        if(snapshot.exists()){
+            const playerData = snapshot.val();
+            if(gameSettings.nrOfPlayers === "1-4" || gameSettings.nrOfPlayers === "5-8" ){
+                if(!playerData.team2){
+                    await push(ref(db, `players/${gamePin}/team${2}`),userName);
+                }
+                else{
+                    alert("Team 2 already filled");
+                    //TODO zorg dat na alert je niet meer navigate naar de lobby
+                }
+            }
+            else{
+                if(!playerData.team2){
+                    await push(ref(db, `players/${gamePin}/team${2}`),userName);
+                }
+                else if(!playerData.team3){
+                    await push(ref(db, `players/${gamePin}/team${3}`),userName);
+                }
+                else{
+                    alert("Teams already filled")
+                }
+            }
+        }
+    }
     return(
         <SafeAreaView style={[ style.mainContainer, AndroidSafeView.AndroidSafeView]}>
             <Header

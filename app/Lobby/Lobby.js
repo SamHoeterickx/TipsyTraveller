@@ -14,27 +14,41 @@ import BackButton from "../shared/components/BackButton/BackButton";
 
 export default function Lobby ({ navigation, route }) {
     const { gameID,isHost,hostName,gameSettings} = route.params;
-
-    const [gameData, setGameData] = useState(gameSettings);
+    const [host, setHost] = useState(isHost);
+    const [gameData, setGameData] = useState(gameSettings || {});
     const [userName, setUserName] = useState('');
     const [teamMembers, setTeamMembers] = useState();
     const [inputVisibility, setInputVisibility] = useState(true);
-
+    const [readyToAdd, setReadyToAdd] = useState(false);
     useEffect(() => {
+
         const players = ref(db, `players/${gameID}`);
         const subscribe = onValue(players, (snapshot) => {
             if (snapshot.exists()) {
                 const data = snapshot.val();
                 setTeamMembers(data);
+                setHost(isHost);
+
             }
             else {
                 console.log("no Game found")
             }
         });
-
         return () => off(players);
     }, [gameID]);
 
+    useEffect(() => {
+        if (!teamMembers|| !gameData?.nrOfPlayers) return;
+        const totalPlayers = Object.values(teamMembers)
+            .reduce((sum, team) => sum + Object.values(team).length, 0);
+
+        if (["1-4", "5-8"].includes(gameData.nrOfPlayers)) {
+            setReadyToAdd(totalPlayers >= 2);
+        } else if (gameData.nrOfPlayers === "9-12") {
+            setReadyToAdd(totalPlayers >= 3);
+        }
+
+    }, [teamMembers]);
     useEffect(() => {
         const game = ref(db, `games/${gameID}`);
         const unsubscribe = onValue(game, (snapshot) => {
@@ -86,7 +100,7 @@ export default function Lobby ({ navigation, route }) {
     }
     const giveTeamNr = (playerCount) => {
 
-        if (gameData.nrOfPlayers === "1-4" || gameData.nrOfPlayers === "4-8") {
+        if (gameData.nrOfPlayers === "1-4" || gameData.nrOfPlayers === "5-8") {
             if(playerCount % 2 === 0){
                 return 2;
             }
@@ -94,7 +108,7 @@ export default function Lobby ({ navigation, route }) {
                 return 1;
             }
         }
-        if (gameData.nrOfPlayers === "8-12") {
+        if (gameData.nrOfPlayers === "9-12") {
             if(playerCount=== 3 || playerCount === 6|| playerCount===9 ||playerCount === 12){
                 return 3;
             }
@@ -140,7 +154,7 @@ export default function Lobby ({ navigation, route }) {
                     index={ 2 }
                     onRemovePlayer={handleRemovePlayer}
                 />
-                {gameData && gameData.nrOfPlayers === "8-12" && (
+                {gameData && gameData.nrOfPlayers === "9-12" && (
                     <TeamContainer
                         team={ teamMembers && teamMembers.team3 }
                         index={ 3 }
@@ -151,8 +165,7 @@ export default function Lobby ({ navigation, route }) {
                 
             </View>
 
-            {
-                isHost && inputVisibility === true && (
+            {host && inputVisibility === true && readyToAdd && (
                     <View style={ style.inputContainer}>
                         {/*<Text style={ style.inputLabel }>ENTER USERNAME</Text>*/}
                         <View style={ style.inputField }>
@@ -168,6 +181,12 @@ export default function Lobby ({ navigation, route }) {
                             </TouchableOpacity>
                         </View>
                     </View>
+                )
+            }
+            { host && !readyToAdd && (
+                <View style={ style.waitingForPlayersContainer }>
+                    <Text style={ style.waitingForPlayers }>Waiting for teamleaders to join...</Text>
+                </View>
                 )
             }
             <LowerButtonContainer 
@@ -236,5 +255,12 @@ const style = StyleSheet.create({
         fontSize: 24,
         color: "#fff",
         fontWeight: "bold"
+    },
+    waitingForPlayersContainer: {
+        paddingBottom: 25,
+    },
+    waitingForPlayers: {
+        fontSize: 20,
+        fontFamily: "dogicapixelbold",
     }
 })

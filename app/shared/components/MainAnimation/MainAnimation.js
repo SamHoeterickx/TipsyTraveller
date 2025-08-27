@@ -36,8 +36,11 @@ export default function MainAnimation () {
                     source={require('../../../../assets/animations/animatie-wereld.json')}
                 />
             </View>
-
-            <Text style={ style.appName }>TIPSY {"\n"} TRAVELLER</Text>
+            <View style={{ alignItems: "center", position: "absolute", bottom: 30 }}>
+                <Text style={style.appName}>TIPSY</Text>
+                <Text style={style.appName}>TRAVELLER</Text>
+            </View>
+            {/*<Text style={ style.appName }>TIPSY {"\n"} TRAVELLER</Text>*/}
         </View>
     )
 }
@@ -61,8 +64,7 @@ const style = StyleSheet.create({
         color: "#393939",
         fontSize: 40,
         textAlign: "center",
-        position: "absolute",
-        bottom: 30,
+
         lineHeight: 50,
         fontFamily: "dogicapixelbold",
 
