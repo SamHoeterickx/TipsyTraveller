@@ -14,8 +14,8 @@ export default function TeamContainer ({ team, index, onRemovePlayer }) {
                 <View style={ style.line }></View>
             </View>
             <View style={ style.teamMemberContainer }>
-                {team && Object.values(team).map((name) => (
-                    <PlayerBox name={name} key={name} teamNr={index} onRemovePlayer={ onRemovePlayer } />
+                {team && Object.values(team).map((player, i) => (
+                    <PlayerBox name={player.name} isLeader={player.isLeader} key={i} teamNr={index} onRemovePlayer={ () => onRemovePlayer(index, player) } />
                 ))}
             </View>
         </View>

@@ -16,7 +16,7 @@ import LowerButtonContainer from "../shared/components/LowerButtonContainer/Lowe
 /**
  * @typedef { Object } GameSettingOption
  * @property { string } setting
- * @property { string[] } titles 
+ * @property { string[] } titles
  * @property { (string|number)[] } options 
  * @property { any[] } imgPathOptions 
  * @property { Object } gameSettings 

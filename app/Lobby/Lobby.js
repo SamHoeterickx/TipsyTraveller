@@ -1,5 +1,5 @@
 import { SafeAreaView } from "react-native-safe-area-context";
-import {Text, StyleSheet, View, TouchableOpacity} from "react-native";
+import {Text, StyleSheet, View, TouchableOpacity, Alert} from "react-native";
 import {useEffect, useState} from "react";
 //COMPONENTS
 import TeamContainer from "./components/TeamContainer";
@@ -31,7 +31,9 @@ export default function Lobby ({ navigation, route }) {
 
             }
             else {
-                console.log("no Game found")
+                //console.log("no Game found");
+                Alert.alert("Error", "Game has been deleted.");
+                navigation.navigate("Home", {});
             }
         });
         return () => off(players);
@@ -79,16 +81,24 @@ export default function Lobby ({ navigation, route }) {
         const newCount = currentCount + 1;
         await set(ref(db, `players/${gameID}/playerCounter`), newCount);
         const teamNr = giveTeamNr(newCount);
-        await push(ref(db, `players/${gameID}/team${teamNr}`),userName);
+        await push(ref(db, `players/${gameID}/team${teamNr}`),{name:userName, isLeader: false});
         setUserName("");
 
     }
-    const handleRemovePlayer = async (teamNr, playerName) => {
+    const handleRemovePlayer = async (teamNr, player) => {
+        if (!host){
+            Alert.alert("Action not allowed", "Only the host can add and remove players.");
+            return;
+        }
+        if (player.isLeader){
+            Alert.alert("Action not allowed", "You cannot remove a team leader.");
+            return;
+        }
         const teamRef = ref(db, `players/${gameID}/team${teamNr}`);
         const snapshot = await get(teamRef);
         if (snapshot.exists()) {
             const playersData = snapshot.val();
-            const playerKey = Object.keys(playersData).find((key) => playersData[key] === playerName);
+            const playerKey = Object.keys(playersData).find((key) => playersData[key].name === player.name);
             if (playerKey) {
                 await remove(child(teamRef, playerKey));
 
@@ -159,6 +169,7 @@ export default function Lobby ({ navigation, route }) {
                         team={ teamMembers && teamMembers.team3 }
                         index={ 3 }
                         onRemovePlayer={handleRemovePlayer}
+
                     />
                 ) }
 

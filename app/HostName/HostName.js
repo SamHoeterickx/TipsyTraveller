@@ -29,7 +29,13 @@ export default function HostName ({ navigation, route }) {
             const newGameID = await generateUniqueGame(gameSettings);
             await set(ref(db, `players/${newGameID}`), {playerCounter: 0, team1: "", team2: "", team3: ""});
             const playersRef = ref(db, `players/${newGameID}/team${1}`);
-            push(playersRef, userName );
+            push(playersRef, {name:userName, isLeader: true} );
+
+            //testcleanup na disconnecten
+            const gamesRef = ref(db, `games/${newGameID}`);
+            const players = ref(db, `players/${newGameID}`);
+            await onDisconnect(gamesRef).remove();
+            await onDisconnect(players).remove();
             navigation.navigate("LobbyScreen", {
                 gameID: newGameID,
                 isHost: isHost,

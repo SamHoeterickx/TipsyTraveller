@@ -1,4 +1,14 @@
-import { SafeAreaView, StyleSheet, Text, View} from "react-native";
+import {
+    Alert,
+    Keyboard,
+    KeyboardAvoidingView,
+    Platform,
+    SafeAreaView,
+    StyleSheet,
+    Text,
+    TouchableWithoutFeedback,
+    View
+} from "react-native";
 import {useEffect, useState} from "react";
 import {ref, set, get, onDisconnect, child, push} from "firebase/database";
 import { db } from "../../firebaseConfig";
@@ -16,6 +26,7 @@ export default function JoinGame ({ navigation }) {
     const [gamePin, setGamePin] = useState('');
     const [userName, setUserName] = useState('');
     const isHost = false;
+
     useEffect(() => {
         console.log(gamePin, userName);
     }, [gamePin, userName]);
@@ -23,6 +34,7 @@ export default function JoinGame ({ navigation }) {
     const handleJoin = async () => {
          let gameExists = false;
         if (userName === ""|| gamePin === "" ){
+            Alert.alert("Error", "Please enter a valid game ID");
             return;
         }else {
             const snapshot = await get(child(ref(db),`games/${gamePin}`));
@@ -35,7 +47,8 @@ export default function JoinGame ({ navigation }) {
                 navigation.navigate( "LobbyScreen" , {gameID: gamePin, isHost: isHost, gameSettings});
             }
             else {
-                console.log("game not found");
+                //console.log("game not found");
+                Alert.alert("Error", "Please enter a valid game ID");
             }
         }
     }
@@ -46,19 +59,20 @@ export default function JoinGame ({ navigation }) {
             const playerData = snapshot.val();
             if(gameSettings.nrOfPlayers === "1-4" || gameSettings.nrOfPlayers === "5-8" ){
                 if(!playerData.team2){
-                    await push(ref(db, `players/${gamePin}/team${2}`),userName);
+                    await push(ref(db, `players/${gamePin}/team${2}`),{name:userName, isLeader: true});
                 }
                 else{
-                    alert("Team 2 already filled");
+                    Alert.alert("Warning","Team 2 already filled");
                     //TODO zorg dat na alert je niet meer navigate naar de lobby
+
                 }
             }
             else{
                 if(!playerData.team2){
-                    await push(ref(db, `players/${gamePin}/team${2}`),userName);
+                    await push(ref(db, `players/${gamePin}/team${2}`),{name:userName, isLeader: true});
                 }
                 else if(!playerData.team3){
-                    await push(ref(db, `players/${gamePin}/team${3}`),userName);
+                    await push(ref(db, `players/${gamePin}/team${3}`),{name:userName, isLeader: true});
                 }
                 else{
                     alert("Teams already filled")
@@ -100,6 +114,7 @@ export default function JoinGame ({ navigation }) {
             </View>
         </SafeAreaView>
     )
+
 }
 
 const style = StyleSheet.create({
@@ -110,7 +125,8 @@ const style = StyleSheet.create({
         justifyContent: "space-between"
     },
     lowerContainer:{
-        height: "50%",
+        flex: 1,
+        justifyContent: "center",
         width: "90%"
     },
     inputContainer: {

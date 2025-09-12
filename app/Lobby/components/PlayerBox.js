@@ -1,5 +1,5 @@
 import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
-export default function PlayerBox ({ name, onRemovePlayer, teamNr }) {
+export default function PlayerBox ({ name, onRemovePlayer, teamNr}) {
     const removePlayer = async () => {
 
     }
