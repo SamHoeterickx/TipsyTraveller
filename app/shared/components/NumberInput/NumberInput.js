@@ -2,14 +2,15 @@ import React, { useState, useRef, useEffect } from 'react';
 import {
     TextInput,
     StyleSheet,
-    View
+    View,
+    Platform
 } from 'react-native';
 
 export default function NumberInput({ placeholder, value, setValue }) {
 
     const handleChange = (text) => {
         // Allow only digits
-        const cleaned = text.replace(/[^0-9]/g, '').slice(0, 6);
+        const cleaned = text.replace(/[^0-9]/g, '').slice(0, 4);
         setValue(cleaned);
     };
 
@@ -19,8 +20,9 @@ export default function NumberInput({ placeholder, value, setValue }) {
                 style={styles.inputfield}
                 value={value}
                 placeholder={placeholder}
-                keyboardType={"numeric"}
+                keyboardType={ Platform.OS === "ios" ? "number-pad" : "numeric"}
                 onChangeText={handleChange}
+                returnKeyType={ "done" }
             />
         </View>
     );
@@ -29,7 +31,7 @@ export default function NumberInput({ placeholder, value, setValue }) {
 const styles = StyleSheet.create({
     inputfieldContainer: {
         backgroundColor: "#D9D9D9",
-        paddingVertical: 25,
+        paddingVertical: 10,
         marginTop: 20,
         borderRadius: 10,
         alignItems: "center",
