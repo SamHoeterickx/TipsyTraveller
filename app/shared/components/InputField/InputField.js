@@ -28,7 +28,7 @@ export default function InputField({ placeholder, value, setValue }) {
 const styles = StyleSheet.create({
     inputfieldContainer: {
         backgroundColor: "#D9D9D9",
-        paddingVertical: 20,
+        paddingVertical: 10,
         marginTop: 20,
         borderRadius: 10,
         alignItems: "center",
