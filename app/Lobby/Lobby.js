@@ -136,7 +136,16 @@ export default function Lobby ({ navigation, route }) {
     }
 
     const handleNextButton = () => {
-        console.log("next");
+        if (!host) {
+            Alert.alert("Action not allowed", "Only the host can start the game.");
+            return;
+        }
+
+        navigation.navigate("GameScreen", {
+            gameID,
+            gameSettings: gameData,
+            players: teamMembers,
+        });
     }
 
     return (

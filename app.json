@@ -22,7 +22,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/ios-light.png",
+        "foregroundImage": "./assets/icons/ios-light.png",
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
@@ -36,11 +36,12 @@
         "expo-font",
         {
           "fonts": [
-            "/assets/fonts/dogicapixel.otf",
-            "/assets/fonts/dogicapixelbold.otf"
+            "./assets/fonts/dogicapixel.otf",
+            "./assets/fonts/dogicapixelbold.otf"
           ]
         }
-      ]
+      ],
+      "expo-asset"
     ],
     "extra": {
       "eas": {

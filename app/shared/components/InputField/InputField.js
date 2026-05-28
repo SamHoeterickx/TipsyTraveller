@@ -19,7 +19,7 @@ export default function InputField({ placeholder, value, setValue }) {
                 style={styles.inputfield}
                 value={value}
                 placeholder={placeholder}
-                onChangeText={handleChange}
+                onChangeText={handleChange}npm start
             />
         </View>
     );

@@ -9,6 +9,7 @@ import JoinGame from "../JoinGame/JoinGame"
 import {useFonts} from "expo-font";
 import Lobby from '../Lobby/Lobby';
 import HostName from "../HostName/HostName";
+import GameScreen from "../Game/GameScreen";
 
 const Stack = createStackNavigator();
 
@@ -43,6 +44,11 @@ export default function App() {
         <Stack.Screen
           name='LobbyScreen'
           component={ Lobby }
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="GameScreen"
+          component={ GameScreen }
           options={{ headerShown: false }}
         />
 
