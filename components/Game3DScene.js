@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { StyleSheet, View, Image, Text } from "react-native";
 
 // ─── SVG Map import ───────────────────────────────────────────────────────────
-const MAP_SVG = require("../assets/map.svg");
+import MapSVG from "../assets/map.svg";
 
 // ─── Simple route through Europe (for testing) ───────────────────────────────
 // These are normalized 2D coordinates (0-1) that map to the map dimensions
@@ -83,11 +83,9 @@ export default function Game3DScene({
   return (
     <View style={styles.container}>
       {/* SVG MAP as background layer */}
-      <Image
-        source={MAP_SVG}
-        style={styles.mapImage}
-        resizeMode="cover"
-      />
+      <View style={StyleSheet.absoluteFillObject}>
+        <MapSVG width="100%" height="100%" preserveAspectRatio="xMidYMid slice" />
+      </View>
 
       {/* Overlay container for markers */}
       <View style={styles.overlayContainer}>
