@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4fc08078-9b26-4b86-bf95-b4b43622ef91" name="Changes" comment="remove ability for players to remove host">
+      <change beforePath="$PROJECT_DIR$/app/shared/components/InputField/InputField.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/components/InputField/InputField.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="7-firebase-integration" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;nielspet04&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/SamHoeterickx/TipsyTraveller.git&quot;,
+    &quot;accountId&quot;: &quot;6077f3f7-ba7a-4ac6-85bd-0be0b5d443f9&quot;
+  },
+  &quot;recentNewPullRequestHead&quot;: {
+    &quot;server&quot;: {
+      &quot;useHttp&quot;: false,
+      &quot;host&quot;: &quot;github.com&quot;,
+      &quot;port&quot;: null,
+      &quot;suffix&quot;: null
+    },
+    &quot;owner&quot;: &quot;SamHoeterickx&quot;,
+    &quot;repository&quot;: &quot;TipsyTraveller&quot;
+  }
+}</component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="Security Analysis" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="30yFUHs5h2184uxkfT4RxteSL7u" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Node.js.JoinGame.js.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/nielspeters/IdeaProjects/TipsyTraveller&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;JavaScript&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/assets/images" />
+      <recent name="$PROJECT_DIR$/assets/fonts" />
+      <recent name="$PROJECT_DIR$/assets/animations" />
+      <recent name="$PROJECT_DIR$/assets/icons" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.26094.121" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4fc08078-9b26-4b86-bf95-b4b43622ef91" name="Changes" comment="" />
+      <created>1754591919598</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1754591919598</updated>
+      <workItem from="1754591920727" duration="482000" />
+      <workItem from="1754593160944" duration="106123000" />
+      <workItem from="1758701662437" duration="1285000" />
+      <workItem from="1759236608830" duration="674000" />
+      <workItem from="1759938057630" duration="221000" />
+    </task>
+    <task id="LOCAL-00001" summary="negers">
+      <option name="closed" value="true" />
+      <created>1754594905626</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1754594905626</updated>
+    </task>
+    <task id="LOCAL-00002" summary="poging tot fonts, main animatie component, dev build testing">
+      <option name="closed" value="true" />
+      <created>1754941159456</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1754941159456</updated>
+    </task>
+    <task id="LOCAL-00003" summary="fonts gefixt">
+      <option name="closed" value="true" />
+      <created>1754943816765</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1754943816765</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Android safe view test">
+      <option name="closed" value="true" />
+      <created>1754944775427</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1754944775428</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Safe area view gemaakt voor android">
+      <option name="closed" value="true" />
+      <created>1754944988335</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1754944988335</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Header">
+      <option name="closed" value="true" />
+      <created>1754951487894</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1754951487894</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Join game added game pin and username field">
+      <option name="closed" value="true" />
+      <created>1755007325752</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1755007325752</updated>
+    </task>
+    <task id="LOCAL-00008" summary="random game id">
+      <option name="closed" value="true" />
+      <created>1755181217681</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1755181217681</updated>
+    </task>
+    <task id="LOCAL-00009" summary="databasestart met creategame functie">
+      <option name="closed" value="true" />
+      <created>1755857040633</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1755857040633</updated>
+    </task>
+    <task id="LOCAL-00010" summary="add players to db">
+      <option name="closed" value="true" />
+      <created>1756142673125</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1756142673125</updated>
+    </task>
+    <task id="LOCAL-00011" summary="player adding working (kinda)">
+      <option name="closed" value="true" />
+      <created>1756147785227</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1756147785227</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Playercounter tracker with child in db working">
+      <option name="closed" value="true" />
+      <created>1756209995893</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1756209995893</updated>
+    </task>
+    <task id="LOCAL-00013" summary="RemovePLayers kind of working, with 3 teams adding still not perfect">
+      <option name="closed" value="true" />
+      <created>1756244657153</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1756244657153</updated>
+    </task>
+    <task id="LOCAL-00014" summary="joining with multiple phones and disabling input working">
+      <option name="closed" value="true" />
+      <created>1756320843364</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1756320843364</updated>
+    </task>
+    <task id="LOCAL-00015" summary="remove ability for players to remove host">
+      <option name="closed" value="true" />
+      <created>1757703826376</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1757703826376</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="negers" />
+    <MESSAGE value="poging tot fonts, main animatie component, dev build testing" />
+    <MESSAGE value="fonts gefixt" />
+    <MESSAGE value="Android safe view test" />
+    <MESSAGE value="Safe area view gemaakt voor android" />
+    <MESSAGE value="Header" />
+    <MESSAGE value="Join game added game pin and username field" />
+    <MESSAGE value="random game id" />
+    <MESSAGE value="databasestart met creategame functie" />
+    <MESSAGE value="add players to db" />
+    <MESSAGE value="player adding working (kinda)" />
+    <MESSAGE value="Playercounter tracker with child in db working" />
+    <MESSAGE value="RemovePLayers kind of working, with 3 teams adding still not perfect" />
+    <MESSAGE value="joining with multiple phones and disabling input working" />
+    <MESSAGE value="remove ability for players to remove host" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove ability for players to remove host" />
+  </component>
+</project>

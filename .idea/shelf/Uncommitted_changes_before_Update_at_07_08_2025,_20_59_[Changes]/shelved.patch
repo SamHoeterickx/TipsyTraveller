@@ -1,0 +1,14 @@
+Index: app/+not-found.jsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import { Stack } from 'expo-router';\nimport { StyleSheet } from 'react-native';\n\nexport default function NotFoundScreen() {\n  return (\n    <>\n      <Stack.Screen options={{ title: 'Oops!' }} />\n    </>\n  );\n}\n\nconst styles = StyleSheet.create({\n  container: {\n    flex: 1,\n    alignItems: 'center',\n    justifyContent: 'center',\n    padding: 20,\n  },\n  link: {\n    marginTop: 15,\n    paddingVertical: 15,\n  },\n});\n
+===================================================================
+diff --git a/app/+not-found.jsx b/app/+not-found.jsx
+--- a/app/+not-found.jsx	(revision 724f988febdbb765f6881ecbf5a0f922380d709c)
++++ b/app/+not-found.jsx	(date 1754592145563)
+@@ -1,4 +1,4 @@
+-import { Stack } from 'expo-router';
++npimport { Stack } from 'expo-router';
+ import { StyleSheet } from 'react-native';
+ 
+ export default function NotFoundScreen() {
